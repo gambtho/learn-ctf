@@ -24,7 +24,7 @@ deploy:
           ls -haltr /pipeline/source
     - install-packages:
         packages: git ssh-client liberror-perl
-    - gh-pages:
+    - lukevivier/gh-pages:
         token: $GIT_TOKEN
         domain: learn.greyhatctf.com
         basedir: public
