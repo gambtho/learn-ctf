@@ -1,0 +1,30 @@
+box: debian
+build:
+  steps:
+    - install-packages:
+        packages: git
+    - script:
+        name: download theme
+        code: |
+            $(git clone https://github.com/gyorb/hugo-dusk ./themes/hugo-dusk)
+    - arjen/hugo-build:
+        version: "HEAD"
+        theme: hugo-dusk
+        flags: --buildDrafts=true
+
+deploy:
+  steps:
+    - script:
+        name: ls output
+        code: |
+          ls -haltr /pipeline/output
+    - script:
+        name: ls source
+        code: |
+          ls -haltr /pipeline/source
+    - install-packages:
+        packages: git ssh-client liberror-perl
+    - gh-pages:
+        token: $GIT_TOKEN
+        domain: learn.greyhatctf.com
+        basedir: public
