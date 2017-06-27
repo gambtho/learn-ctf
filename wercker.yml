@@ -6,10 +6,10 @@ build:
     - script:
         name: download theme
         code: |
-            $(git clone https://github.com/gyorb/hugo-dusk ./themes/hugo-dusk)
+            $(git clone https://github.com/Zenithar/hugo-theme-bleak.git ./themes/hugo-theme-bleak)
     - arjen/hugo-build:
         version: "HEAD"
-        theme: hugo-dusk
+        theme: hugo-theme-bleak
         flags: --buildDrafts=true
 
 deploy:
