@@ -1,4 +1,4 @@
-box: debian
+box: golang
 build:
   steps:
     - install-packages:
