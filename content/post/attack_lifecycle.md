@@ -15,6 +15,7 @@ In the reconnaissance phase, attackers perform passive and active reconnaissance
 
 ### Passive reconnaissance
 Passive reconnaissance refers to reconnaissance in a such a way that the target network is not touched by packets from the attacker. This includes the following:
+
 - Whois lookups
 - Search engine queries
 - Social media profiles
@@ -23,15 +24,27 @@ Passive reconnaissance refers to reconnaissance in a such a way that the target 
 
 ### Active Reconnaissance
 Active reconnaissance involves touching the target network with packets from the attacker, and this includes packets coming through proxy channels. Active reconnaissance includes the following:
+
 - Browsing target owned websites (e.g. corporate websites)
 - Scanning of target networks
 - Enumerating systems
 
 ## Exploitation
+In the exploitation phase the attacker successfully compromises a vulnerable system. This can be accomplished through social engineering, vulnerabilities unpatched systems, misconfigured systems, weak passwords, SQL injection, or zero-day exploits.
+
+Successful exploitation will give the attacker some form of limited access to the system. Once the attacker has a foothold on the system he will then establish a persistence mechanism such as a backdoor so that he can maintain long-term access to the system. The attacker may also close the vulnerability he used to gain access so that no other attacker can get in the same way.
 
 ## Privilege Escalation
+After successful exploitation, the attacker usually has limited system privileges or has privileges on part of the network but not his true target on the network. The attacker will then seek to gain the highest privileges necessary to reach his objective.
+
+Privilege escalation can be accomplished by dumping password databases and cracking passwords, performing man-in-the-middle attacks to access credentials, dumping memory, more social engineering, system exploits to escalate to root privileges, or moving laterally to other systems with higher privileges.
+
+Once the attacker has escalated his privileges to the point where he can access his objective he will again establish persistence, but this time at the higher privilege level.
 
 ## Actions on Objective
+Finally, the attacker has reached his objective. This may be a database with sensitive information, a server that performs critical functions, or any other intellectual property. Depending on the attacker's goals he may exfiltrate the data off the network, sabotage the function of the system, or maintain persistence to collect intelligence long-term.
+
+Often once actions on the objective are complete, the attacker will continue to maintain persistence on the system or add some backdoor access so they can easily come back when they want.
 
 
 # References
