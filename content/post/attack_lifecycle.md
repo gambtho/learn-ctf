@@ -15,17 +15,17 @@ In the reconnaissance phase, attackers perform passive and active reconnaissance
 
 ### Passive reconnaissance
 Passive reconnaissance refers to reconnaissance in a such a way that the target network is not touched by packets from the attacker. This includes the following:
-* Whois lookups
-* Search engine queries
-* Social media profiles
-* SEC filings
-* Public legal documents
+- Whois lookups
+- Search engine queries
+- Social media profiles
+- SEC filings
+- Public legal documents
 
 ### Active Reconnaissance
 Active reconnaissance involves touching the target network with packets from the attacker, and this includes packets coming through proxy channels. Active reconnaissance includes the following:
-* Browsing target owned websites (e.g. corporate websites)
-* Scanning of target networks
-* Enumerating systems
+- Browsing target owned websites (e.g. corporate websites)
+- Scanning of target networks
+- Enumerating systems
 
 ## Exploitation
 
