@@ -9,12 +9,11 @@ Nmap is a widely used network scanning and mapping tool. It is an open source co
 
 Nnap can be used to scan networks or single hosts. It uses a variety of scanning techniques that include standard IP implementations and modified IP implementations. Nmap is also extensible using the Nmap Scripting Engine (NSE) to write custom scanning scripts. 
 
-Using Nmap is generally a five step process:
+Using Nmap is generally a four step process:
 
 1. Discover hosts on network
 2. Port scan specific hosts
-3. Enumerate services on host
-4. Fingerprint OS
+3. Enumerate services on host and fingerprint OS
 5. Run NSE scripts for further enumeration or exploitation of host
 
 # Basic Usage
@@ -27,7 +26,7 @@ Scan single network
 ```bash
 nmap 192.168.222.0/24
 ```
-![Nmap](/attack/nmap_default.png)
+![Nmap default scan](/attack/nmap_default.png)
 
 Scan network by IP range
 ```bash
@@ -39,11 +38,16 @@ Scan single host using default ports
 nmap 192.168.222.159
 ```
 
-Enumerate services on host
+Enumerate services, fingerprint OS, and run script scans on single host
 ```
 nmap -A 192.168.222.159
 ```
 
+Run vsftpd backdoor script scan on single host
+```
+nmap --script ftp-vsftpd-backdoor 192.168.222.159
+```
+![Nmap vsftpd script scan](/attack/nmap_vsftpd_script.png)
 
 # Specifying ports
 By default Nmap only scans the top 1000 most frequently used ports. The list of port frequencies can be found the nmap-services file. Assuming your services file is contained in /usr/share/nmap/ directory you can run
@@ -84,6 +88,16 @@ Scan all ports
 nmap 192.168.222.159 -p-
 ```
 
+
+# Nmap Scripting Engine (NSE)
+The NSE scripts are typically located in /usr/share/nmap/scripts/ or /usr/local/share/nmap/scripts for Linux or C:\Program Files\Nmap\scripts for Windows.
+
+A count of the files in scripts directory reveals that Nmap v7.50 comes preloaded with 567 scripts. Many scripts for testing or even exploiting various services and vulnerabilities exist. There are too many scripts to discuss all of them here in this article. The best thing to do is read the script documentation in the script file and/or try the script on vulnerable and non-vulnerable hosts to see what the results look like.
+
+If a script that meets your needs doesn't exist you can write your own. NSE scripts are written in Lua.
+
+
 # References
 1. [Nmap: The Network Mapper](https://nmap.org/)
 2. [Top 1,000 TCP and UDP ports (nmap default)](http://www.nullsec.us/top-1-000-tcp-and-udp-ports-nmap-default/)
+3. [Guide to using Nmap to scan for the Heartbleed bug](https://gist.github.com/bonsaiviking/10402038)
