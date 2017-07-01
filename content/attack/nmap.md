@@ -4,7 +4,7 @@ date: 2017-07-01T10:03:27Z
 draft: true
 ---
 
-#Introduction
+# Introduction
 Nmap is a widely used network scanning and mapping tool. It is an open source command line tool, but there are GUI front ends such as Zenmap that can be used with Nmap.
 
 Nnap can be used to scan networks or single hosts. It uses a variety of scanning techniques that include standard IP implementations and modified IP implementations. Nmap is also extensible using the Nmap Scripting Engine (NSE) to write custom scanning scripts. 
@@ -27,6 +27,7 @@ Scan single network
 ```bash
 nmap 192.168.222.0/24
 ```
+![Nmap](/attack/nmap_basic.png)
 
 Scan network by IP range
 ```bash
@@ -39,6 +40,9 @@ nmap 192.168.222.159
 ```
 
 Enumerate services on host
+```
+nmap -A 192.168.222.159
+```
 
 
 # Specifying ports
