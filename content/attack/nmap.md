@@ -27,7 +27,7 @@ Scan single network
 ```bash
 nmap 192.168.222.0/24
 ```
-![Nmap](/attack/nmap_basic.png)
+![Nmap](/attack/nmap_default.png)
 
 Scan network by IP range
 ```bash
