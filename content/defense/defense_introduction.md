@@ -1,7 +1,6 @@
 ---
-title: "Threat Detection Introduction"
+title: "Defense Scenario: Threat Detection Introduction"
 date: 2017-06-25T04:46:35Z
-draft: true
 ---
 
 # Purpose
@@ -24,6 +23,8 @@ Many of the exercises will leverage Bro Network Security Monitor (NSM) logs and 
 ### Bro Network Security Monitor (NSM)
 
 Bro NSM provides network metadata.  This metadata provides insight about what happened on a network and it is up to the user of the information to derive their own meaning.  Your job during these exercises will typically be to analyze the logs and determine the details of definite or likely malicious activity and discern it from benign activity.  This is often a surprisingly difficult task and requires hands-on experience, which is why this training is hands-on.
+
+![Bro](/defense/logo-bro.png)
 
 ### Wireshark
 

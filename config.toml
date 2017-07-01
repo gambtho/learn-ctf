@@ -1,3 +1,17 @@
 baseURL = "http://learn.greyhatctf.com/"
 languageCode = "en-us"
-title = "Learn you a CTF"
+title = "GreyHat CTF Educational Content"
+
+[[menu.main]]
+  name = "GreyHat CTF Defense"
+  url  = "/defense/"
+  weight = 900
+
+[[menu.main]]
+  name = "GreyHat CTF Attack"
+  url  = "/attack/"
+  weight = 900
+
+[params]
+  noCategoryLink = true
+
