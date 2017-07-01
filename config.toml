@@ -1,4 +1,4 @@
-baseURL = "http://learn.greyhatctf.com/"
+baseURL = "http://learn.greyhatctf.com"
 languageCode = "en-us"
 title = "GreyHat CTF Educational Content"
 [[menu.main]]
