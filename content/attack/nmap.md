@@ -1,8 +1,9 @@
 ---
 title: "Nmap"
-date: 2017-06-28T03:03:27Z
+date: 2017-07-01T10:03:27Z
 draft: true
 ---
+
 #Introduction
 Nmap is a widely used network scanning and mapping tool. It is an open source command line tool, but there are GUI front ends such as Zenmap that can be used with Nmap.
 
@@ -21,7 +22,7 @@ Using Nmap is generally a five step process:
 nmap [Scan Type(s)] [Options] {target specification}
 ```
 
-# Examples
+# Basic Examples
 Scan single network
 ```bash
 nmap 192.168.222.0/24
@@ -37,6 +38,9 @@ Scan single host using default ports
 nmap 192.168.222.159
 ```
 
+Enumerate services on host
+
+
 # Specifying ports
 By default Nmap only scans the top 1000 most frequently used ports. The list of port frequencies can be found the nmap-services file. Assuming your services file is contained in /usr/share/nmap/ directory you can run
 ```
@@ -45,13 +49,35 @@ sort -r -k3 /usr/share/nmap/nmap-services | grep tcp | head -n 100
 to print the top 100 most frequently used TCP ports.
 
 You can control which ports are scanned by specifying ports in your Nmap command with -p option.
+
+Scan only port 80
 ```
-nmap 192.168.222.159 -p80  # scan only port 80
-nmap 192.168.222.159 -p80,443  # scan port 80 and 443
-nmap 192.168.222.159 -p1-1024  # scan ports 1 to 1024
-nmap 192.168.222.159 -sU -p U:53,111,137  # scan UDP ports 53,111,137
-nmap 192.168.222.159 -p1-1024 --exclude-ports 500-900 # scan ports 1 to 1024 but exclude port 500 to 900
-nmap 192.168.222.159 -p-  # scan all ports
+nmap 192.168.222.159 -p80
+```
+
+Scan port 80 and 443
+```
+nmap 192.168.222.159 -p80,443
+```
+
+Scan ports 1 to 1024
+```
+nmap 192.168.222.159 -p1-1024
+```
+
+Scan UDP ports 53,111,137
+```
+nmap 192.168.222.159 -sU -p U:53,111,137
+```
+
+Scan ports 1 to 1024 but exclude all ports from 500 to 900
+```
+nmap 192.168.222.159 -p1-1024 --exclude-ports 500-900 
+```
+
+Scan all ports
+```
+nmap 192.168.222.159 -p-
 ```
 
 # References
