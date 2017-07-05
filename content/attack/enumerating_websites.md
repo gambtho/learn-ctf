@@ -14,6 +14,19 @@ robots.txt file is a text file located in the root of the web directory and is d
 
 robots.txt is a great way to quickly check if there are interesting directories on the web server which should be investigated.
 
+Sample robots.txt from https://wordpress.org/
+```
+User-agent: *
+Disallow: /search
+Disallow: /support/search.php
+Disallow: /extend/plugins/search.php
+Disallow: /plugins/search.php
+Disallow: /extend/themes/search.php
+Disallow: /themes/search.php
+Disallow: /support/rss
+Disallow: /archive/
+```
+
 # DirBuster
 DirBuster is a free Java based application that can be used to scan for web site directories. It comes packaged with lists of directories that can be scanned for. The application is multi-threaded and can run very fast on multi-core CPUs. DirBuster is a great way to scan for directories that may not be linked from the homepage or search engines.
 
