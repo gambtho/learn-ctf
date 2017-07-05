@@ -32,11 +32,13 @@ DirBuster is a free Java based application that can be used to scan for web site
 
 Basic Usage:
 1. Enter target URL
-2. Select word list ![DirBuster Start](/attack/dirbuster_start.png)
+2. Select word list
 3. Click start
-4. View results ![DirBuster Results](/attack/dirbuster_results.png)
+4. View results
 
+![DirBuster Start](/attack/dirbuster_start.png)
 
+![DirBuster Results](/attack/dirbuster_results.png)
 
 # Nikto
 
