@@ -1,7 +1,7 @@
 baseURL = "http://learn.greyhatctf.com"
 languageCode = "en-us"
 title = "GreyHat CTF Educational Content"
-description = " "
+description = "learn you a CTF"
 SectionPagesMenu = "main"
 [[menu.main]]
   name = "GreyHat CTF Defense"
