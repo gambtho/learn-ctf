@@ -2,13 +2,14 @@ baseURL = "http://learn.greyhatctf.com"
 languageCode = "en-us"
 title = "GreyHat CTF Educational Content"
 SectionPagesMenu = "main"
+
 [[menu.main]]
-  name = "GreyHat CTF Defense"
+  name = "defense"
   url  = "/defense/"
   weight = 900
 
 [[menu.main]]
-  name = "GreyHat CTF Attack"
+  name = "attack"
   url  = "/attack/"
   weight = 900
 

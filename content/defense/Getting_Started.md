@@ -1,7 +1,8 @@
 ---
 title: "Getting ELK Running"
 date: 2017-06-25T04:46:35Z
-categories: "GreyHaT CTF Defense"
+categories: "defense"
+tags: "logs"
 
 ---
 
