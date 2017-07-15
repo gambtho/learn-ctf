@@ -44,7 +44,8 @@ You should have multiple log types loaded at this point.  As you explore, we rec
 
 If you are relatively new to Kibana, the video below provides a condensed introduction to get you going with visualizations quickly.
 
-<iframe width="1280" height="720" src="https://www.youtube.com/embed/mMhnGjp8oOI?ecver=1" frameborder="0" allowfullscreen></iframe>
+[![Kibana Training Resources](/defense/kibana_logo.png)](https://p.brightact.com/p/1477331815405265)
+
 
 ## Check Out Some Bro logs
 
@@ -68,3 +69,5 @@ Judicious use of threat intelligence can significantly enhance a teams ability t
 * https://www.proofpoint.com/us/threat-insight/post/Vawtrak-UrlZone-Banking-Trojans-Target-Japan
 
 Scenario: Yesterday your organization saw a wave of phishing emails with a successful lure that unfortunately many fell for.  Those who were on premise were protected because the malware failed to download due to on-site preventative controls.  Unfortunately, those who work remotely and some 3rd party contractors were unprotected.  Some of these employees are now likely on the network today and we need to identify systems infected with the Vawtrak banking trojan.  Your mission is to explore the sample logs, determine how to identify Vawtrak is active to scope the infections, and detect any future infections.
+
+
