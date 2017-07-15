@@ -13,7 +13,7 @@ OpenVPN is an open source VPN software application that allows configuration of 
 3. Click link at bottom "Yourself (user-locked profile)"
 4. Save client.ovpn to a folder on your system
 5. Open a terminal
-6. Use command ```openvpn --config client.ovpn --auth-nocache``` to connect.
+6. Use command ```openvpn --config client.ovpn --auth-nocache``` to connect. In the code example, client.ovpn is in the current directory.
 7. Your terminal will display connection information and should complete connection after about 10 seconds.
 8. Leave terminal open to keep the OpenVPN connection active.
 9. Close terminal or type Ctrl+C to kill connection.
