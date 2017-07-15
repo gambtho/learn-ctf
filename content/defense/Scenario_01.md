@@ -42,7 +42,7 @@ You should have multiple log types loaded at this point.  As you explore, we rec
 
 ## Kibana Introduction
 
-If you are relatively new to Kibana, the video below provides a condensed introduction to get you going with visualizations quickly.
+If you are relatively new to Kibana, click on the Kibana image below to get access to several Kibana training videos to get you started making powerful searches and insightful visualizations.
 
 [![Kibana Training Resources](/defense/kibana_logo.png)](https://p.brightact.com/p/1477331815405265)
 
