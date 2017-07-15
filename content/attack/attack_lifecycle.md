@@ -3,7 +3,7 @@
 title: "The Cyber Attack Lifecycle"
 date: 2017-06-27T02:03:27Z
 draft: true
-categories: "attack"
+categories: "GreyHat CTF Attack"
 
 ---
 # Introduction
