@@ -1,15 +1,20 @@
 ---
-title: "Configuring OpenVPN"
-date: 2017-07-14T18:47:46Z
+title: "Accessing the Lab"
+date: 2017-07-15T18:47:46Z
 draft: true
 ---
 
 # Introduction
+The lab environment that we are hosting contains the virtual machines (VMs) that you'll need to access in order to play in the CTF. We use OpenVPN to private a secure tunnel to the lab environment from your Internet connection.
+
 OpenVPN is an open source VPN software application that allows configuration of VPN services for servers and clients. Our lab network is configured to use OpenVPN to connect to our CTF machines in our attack scenarios.
+
+# Preconfigured Kali Linux
+We provide a preconfigured Kali Linux VM to download. All you have to do is open a terminal ```openvpn --config client.ovpn --auth-nocache``` to connect to lab over VPN.
 
 # Client configuration for Linux
 1. Go to https://107.21.21.107:943/
-2. Enter credentials to login
+2. Enter credentials to login. If you don't have credentials send us a message on Slack or Piazza to get access.
 3. Click link at bottom "Yourself (user-locked profile)"
 4. Save client.ovpn to a folder on your system
 5. Open a terminal
