@@ -23,5 +23,8 @@ We provide a preconfigured Kali Linux VM to download. All you have to do is open
 8. Leave terminal open to keep the OpenVPN connection active.
 9. Close terminal or type Ctrl+C to kill connection.
 
+# Subnets
+You'll have to scan 10.0.0.0/16 to find the VM to attack.
+
 # References
 1. [OpenVPN - Wikipedia](https://en.wikipedia.org/wiki/OpenVPN)
