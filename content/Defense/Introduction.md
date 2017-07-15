@@ -1,6 +1,8 @@
 ---
 title: "Threat Detection Introduction"
 date: 2017-06-26T04:46:35Z
+categories: "Defense" 
+tags: "logs"
 ---
 
 # Purpose

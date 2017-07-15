@@ -1,14 +1,12 @@
 ---
 title: "Getting ELK Running"
 date: 2017-06-25T04:46:35Z
-categories: "Defense"
-tags: "logs"
 
 ---
 
-# First Scenario: Banking Trojan Infection
+# Getting Elastic Stack Running
 
-In the first set of challenges, we will be analyzing Bro Network Security Monitoring (NSM) logs consisting of both benign and malicious traffic.  If you aren't already familiar with [Bro NSM logs](https://www.bro.org/sphinx/), you soon will be.  For this set of challenges, you are provided with a set of tools, mostly docker-compose and docker files that launch analysis environments and give you access to the forensic artifacts to base your analysis on.
+In the first set of challenges, we will be analyzing Bro Network Security Monitoring (NSM) logs consisting of both benign and malicious traffic.  If you aren't already familiar with [Bro NSM logs](https://www.bro.org/sphinx/), you soon will be.  For this set of challenges, you are provided with a set of tools, mostly docker-compose and docker files that launch analysis environments and give you access to the forensic artifacts to base your analysis on.  The compose file specifies your local address in the port mapping, so these instances of Elasticsearch and Kibana will only be accessible and visible to your local host, not accessible externally.  For security reasons, we do not want to expose open instances of these services that do not implement authentication and SSL.
 
 ## Pre-requisites
 
