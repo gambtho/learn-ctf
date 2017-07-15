@@ -4,12 +4,12 @@ title = "GreyHat CTF Educational Content"
 SectionPagesMenu = "main"
 
 [[menu.main]]
-  name = "Defense"
+  name = "defense"
   url  = "/defense/"
   weight = 900
 
 [[menu.main]]
-  name = "Attack"
+  name = "attack"
   url  = "/attack/"
   weight = 900
 
