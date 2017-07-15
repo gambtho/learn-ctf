@@ -4,17 +4,16 @@ title = "GreyHat CTF Educational Content"
 SectionPagesMenu = "main"
 
 [[menu.main]]
-  name = "defense"
+  name = "Defense"
   url  = "/defense/"
   weight = 900
 
 [[menu.main]]
-  name = "attack"
+  name = "Attack"
   url  = "/attack/"
   weight = 900
 
 [params]
   noCategoryLink = true
   description = "Learn through Capture the Flag"
-
 

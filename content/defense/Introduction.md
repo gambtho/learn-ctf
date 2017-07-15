@@ -39,3 +39,8 @@ Although there are several packet analysis tools, both graphical and command lin
 There are various tools and methods for performing file triage analysis.  A basic set of tools will be leveraged, but you are certainly not limited to the set of tools documented in this material.
 
 We'll be using [Remnux Docker Images](https://hub.docker.com/r/remnux/) for our analysis.  The documentation can be found [here](https://remnux.org/docs/containers/malware-analysis/), but we'll walk through what is needed together.
+
+
+Let's get started! [Next Step](/defense/introduction/)
+
+

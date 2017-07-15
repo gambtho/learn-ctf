@@ -1,7 +1,6 @@
 ---
 title: "Getting ELK Running"
 date: 2017-06-25T04:46:35Z
-
 ---
 
 # Getting Elastic Stack Running
