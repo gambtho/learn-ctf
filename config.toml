@@ -2,6 +2,7 @@ baseURL = "http://learn.greyhatctf.com"
 languageCode = "en-us"
 title = "GreyHat CTF Educational Content"
 description = " "
+SectionPagesMenu = "main"
 [[menu.main]]
   name = "GreyHat CTF Defense"
   url  = "/defense/"
