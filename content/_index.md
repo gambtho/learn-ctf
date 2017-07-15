@@ -12,8 +12,5 @@ If you haven't registered for the CTF yet, you may register here:
 
 [GreyHat CTF](http://play.ctf.greyhatctf.com)
 
-At this point you need to choose your path, taking on the role of attacker or defender.  Click on one of the links to get started.
-
-* [Attack](http://learn.greyhatctf.com/attack/attack_lifecycle/)
-* [Defense](http://learn.greyhatctf.com/defense/introduction/)
+At this point you need to choose your path.  Click on one of the categories below to take on the role of attacker or defender.
 
