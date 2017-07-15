@@ -41,6 +41,6 @@ There are various tools and methods for performing file triage analysis.  A basi
 We'll be using [Remnux Docker Images](https://hub.docker.com/r/remnux/) for our analysis.  The documentation can be found [here](https://remnux.org/docs/containers/malware-analysis/), but we'll walk through what is needed together.
 
 
-Let's get started! [Next Step](/defense/introduction/)
+Let's get started! [Next Step](/defense/getting_started/)
 
 

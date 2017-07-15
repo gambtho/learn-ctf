@@ -33,3 +33,5 @@ After cloning the repository and extracting the contents, if you are in the top 
 After starting docker compose, you should be able to open a web browser and navigate to [http://localhost:5601](http://localhost:5601).  If all goes well, you will be redirected to the Management area of the Kibana application.
 
 ![Kibana Image](/defense/navigate_to_kibana.png)
+
+Not that your environment is working, let's start [The First Scenario](/defense/scenario_01/)
