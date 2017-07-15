@@ -1,7 +1,10 @@
 ---
+
 title: "The Cyber Attack Lifecycle"
 date: 2017-06-27T02:03:27Z
 draft: true
+categories: "attack"
+
 ---
 # Introduction
 Cyber attackers have an operating cycle that is common across many attacks. This cycle can be called the attack lifecycle. There are various models to explain how the lifecycle works by many different organizations including Lockheed Martin, Palo Alto Networks, and Mandiant (see References section for links). If you read each variation of the lifecycle you will find that you can summarize the lifecycle into reconnaissance, exploitation, privilege escalation, and actions on objective phases. 

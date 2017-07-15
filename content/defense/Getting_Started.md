@@ -1,6 +1,8 @@
 ---
 title: "Getting ELK Running"
 date: 2017-06-25T04:46:35Z
+categories: "defense"
+
 ---
 
 # First Scenario: Banking Trojan Infection
