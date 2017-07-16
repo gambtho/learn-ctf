@@ -1,7 +1,7 @@
 ---
 title: "Threat Detection Introduction"
 date: 2017-06-26T04:46:35Z
-categories: "Defense" 
+categories: "Defense"
 tags: "logs"
 ---
 
@@ -17,6 +17,14 @@ Whether we like it or not, we must accept that our systems and networks will be 
  - *Attackers are People:* Attackers are people and have habits, preferred tools, and reuse attack patterns.  These are referred to as Tactics, Techniques, and Procedures (TTPs).
  - *Remove Attacker Options:* Adversary TTPs are a weakness we can exploit to frustrate them.  By reliably detecting these TTPs, we remove them from our attacker's available options, kick them out of our systems and we win.
  - *Stop Them Before They Win:* Adversaries win if they can successfully complete each of the necessary steps in their particular "kill chain".  A Cyber Kill Chain is the succession of actions the attacker must complete in order to accomplish their objective.  Most kill chains have many steps necessary to complete, giving defenders some precious time to detect and respond to their advances.
+
+## Attack Lifecycle
+
+As we can see from the attack life cycle shown below from the Mandiant White paper on [Remediating Targeted-threat Intrusions](https://media.blackhat.com/bh-us-12/Briefings/Aldridge/BH_US_12_Aldridge_Targeted_Intrustion_WP.pdf), attackers typically need to complete a series of actions in order to be successful.  As defenders, if we understand this, we realize that at any step in the lifecycle we can detect and respond to the attacker before they can complete their mission.
+
+![Attack Lifecycle](/defense/attack_lifecycle.png)
+
+You'll see in the later scenarios that we must be constantly asking ourselves based on the evidence, who we think the attacker is, what is their motivation, and where in their life cycle are they to effectively prioritize work and scope an incident.  If the incident is not properly scoped, we may not identify all of the attacker's compromised assets and the attacker may not be removed from the environment entirely.
 
 ## Defender Tools Overview
 
@@ -42,5 +50,3 @@ We'll be using [Remnux Docker Images](https://hub.docker.com/r/remnux/) for our 
 
 
 Let's get started! [Next Step](/defense/getting_started/)
-
-
