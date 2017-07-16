@@ -10,11 +10,11 @@ The lab environment that we are hosting contains the virtual machines (VMs) that
 OpenVPN is an open source VPN software application that allows configuration of VPN services for servers and clients. Our lab network is configured to use OpenVPN to connect to our CTF machines in our attack scenarios.
 
 # Preconfigured Kali Linux
-We provide a preconfigured Kali Linux VM to download. All you have to do is open a terminal ```openvpn --config client.ovpn --auth-nocache``` to connect to lab over VPN.
+We provide a preconfigured [Kali Linux VM](https://drive.google.com/open?id=0B2K8RLTn7XOaVmsyTWVVSGd1ZTQ) to download. The username:password for the VM is root:toor. All you have to do is open a terminal and run the script on the Desktop by opening a terminal and entering ```./openvpn_connect.sh```. The script will start the VPN connection. You'll have to enter your credentials to complete the connection.
 
 # Client configuration for Linux
 1. Go to https://107.21.21.107:943/
-2. Enter credentials to login. If you don't have credentials send us a message on Slack or Piazza to get access.
+2. Enter credentials to login.
 3. Click link at bottom "Yourself (user-locked profile)"
 4. Save client.ovpn to a folder on your system
 5. Open a terminal
@@ -23,8 +23,13 @@ We provide a preconfigured Kali Linux VM to download. All you have to do is open
 8. Leave terminal open to keep the OpenVPN connection active.
 9. Close terminal or type Ctrl+C to kill connection.
 
+## VPN Credentials
+User name: student
+Password: 
+
 # Subnets
 You'll have to scan 10.0.0.0/16 to find the VM to attack.
 
 # References
 1. [OpenVPN - Wikipedia](https://en.wikipedia.org/wiki/OpenVPN)
+2. [https://www.kali.org/downloads/](Official Kali Linux Downloads | Kali Linux)
