@@ -20,7 +20,7 @@ Whether we like it or not, we must accept that our systems and networks will be 
 
 ## Attack Lifecycle
 
-As we can see from the attack life cycle shown below from the Mandiant White paper on [Remediating Targeted-threat Intrusions](https://media.blackhat.com/bh-us-12/Briefings/Aldridge/BH_US_12_Aldridge_Targeted_Intrustion_WP.pdf), attackers typically need to complete a series of actions in order to be successful.  As defenders, if we understand this, we realize that at any step in the lifecycle we can detect and respond to the attacker before they can complete their mission.
+As we can see from the attack life cycle shown below from the Mandiant White paper on [Remediating Targeted-threat Intrusions](https://media.blackhat.com/bh-us-12/Briefings/Aldridge/BH_US_12_Aldridge_Targeted_Intrustion_WP.pdf), attackers typically need to complete a series of actions in order to be successful.  Lockheed Martin calls this attack life cycle an [Intrusion Kill Chain](https://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf).  As defenders, if we understand this, we realize that at any step in the lifecycle we can detect and respond to the attacker before they can complete their mission.
 
 ![Attack Lifecycle](/defense/attack_lifecycle.png)
 
