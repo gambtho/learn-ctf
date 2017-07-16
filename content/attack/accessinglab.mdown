@@ -24,6 +24,7 @@ We provide a preconfigured [Kali Linux VM](https://drive.google.com/open?id=0B2K
 9. Close terminal or type Ctrl+C to kill connection.
 
 ## VPN Credentials
+
 User name: student
 Password: 
 
