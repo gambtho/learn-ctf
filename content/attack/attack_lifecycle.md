@@ -28,6 +28,8 @@ Passive reconnaissance refers to reconnaissance in a such a way that the target 
 - Public legal documents
 
 ### Active Reconnaissance
+[Nmap](http://learn.greyhatctf.com/attack/nmap/)
+[Enumerating Web Sites](http://learn.greyhatctf.com/attack/enumerating_websites/)
 Active reconnaissance involves touching the target network with packets from the attacker, and this includes packets coming through proxy channels. Active reconnaissance includes the following:
 
 - Browsing target owned websites (e.g. corporate websites)
@@ -35,11 +37,14 @@ Active reconnaissance involves touching the target network with packets from the
 - Enumerating systems
 
 ## Exploitation
+[We Love Shells](http://learn.greyhatctf.com/attack/shells/)
 In the exploitation phase the attacker successfully compromises a vulnerable system. This can be accomplished through social engineering, vulnerabilities unpatched systems, misconfigured systems, weak passwords, SQL injection, or zero-day exploits.
 
 Successful exploitation will give the attacker some form of limited access to the system. Once the attacker has a foothold on the system he will then establish a persistence mechanism such as a backdoor so that he can maintain long-term access to the system. The attacker may also close the vulnerability he used to gain access so that no other attacker can get in the same way.
 
 ## Privilege Escalation
+[Passwords Attacks](http://learn.greyhatctf.com/attack/passwordattacks/)
+
 After successful exploitation, the attacker usually has limited system privileges or has privileges on part of the network but not his true target on the network. The attacker will then seek to gain the highest privileges necessary to reach his objective.
 
 Privilege escalation can be accomplished by dumping password databases and cracking passwords, performing man-in-the-middle attacks to access credentials, dumping memory, more social engineering, system exploits to escalate to root privileges, or moving laterally to other systems with higher privileges.

@@ -24,9 +24,9 @@ We provide a preconfigured [Kali Linux VM](https://drive.google.com/open?id=0B2K
 9. Close terminal or type Ctrl+C to kill connection.
 
 ## VPN Credentials
-
 User name: student
-Password: 
+
+Check Piazza for the VPN password.
 
 # Subnets
 You'll have to scan 10.0.0.0/16 to find the VM to attack.
