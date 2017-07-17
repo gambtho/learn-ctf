@@ -1,7 +1,7 @@
 ---
 
 title: "The Cyber Attack Lifecycle"
-date: 2017-06-27T02:03:27Z
+date: 2017-07-17T15:14:05Z
 draft: true
 categories: "attack"
 tags: "reference"

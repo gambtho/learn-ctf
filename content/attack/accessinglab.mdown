@@ -9,6 +9,15 @@ The lab environment that we are hosting contains the virtual machines (VMs) that
 
 OpenVPN is an open source VPN software application that allows configuration of VPN services for servers and clients. Our lab network is configured to use OpenVPN to connect to our CTF machines in our attack scenarios.
 
+# Lab Rules
+1. Denial of service type attacks are not allowed.
+2. Locking other players out from the VM is not allowed. This includes setting firewall rules or disabling listening services which were already turned on.
+3. Altering or deleting flags is not allowed.
+4. Altering IP address configurations is not allowed.
+5. Attacking other players on the system is not allowed.
+
+Anyone found to be violating these rules may be kicked off the network and banned from future access.
+
 # Preconfigured Kali Linux
 We provide a preconfigured [Kali Linux VM](https://drive.google.com/open?id=0B2K8RLTn7XOaVmsyTWVVSGd1ZTQ) to download. The username:password for the VM is root:toor. All you have to do is open a terminal and run the script on the Desktop by opening a terminal and entering ```./openvpn_connect.sh```. The script will start the VPN connection. You'll have to enter your credentials to complete the connection.
 
@@ -30,6 +39,9 @@ Check Piazza for the VPN password.
 
 # Subnets
 You'll have to scan 10.0.0.0/16 to find the VM to attack.
+
+# Lab Virtual Machines
+The lab VMs all have vulnerabilities that can be exploited to gain access and find flags. VMs will reset back to original configurations approximately every 30 minutes. So consider yourself to have 30 minutes per VM to attack. If you don't finish in 30 minutes just start over on the reset VM.
 
 # References
 1. [OpenVPN - Wikipedia](https://en.wikipedia.org/wiki/OpenVPN)
