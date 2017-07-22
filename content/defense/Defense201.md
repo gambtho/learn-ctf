@@ -13,7 +13,7 @@ Be sure you have downloaded [Wireshark](https://www.wireshark.org/).  You may al
 
 Extracting files from HTTP traffic is surprisingly easy with Wireshark.  The video below will demonstrate how to extract the file using Wireshark's built-in file object parsing as well as how to manually export the raw bytes to a local file.  Some protocols, like FTP will require the later method to extract files from network streams.
 
-[Wireshark Extracting Files](https://youtu.be/BEd08qDYgGQ)
+[![Wireshark Extracting Files](https://i.ytimg.com/vi/BEd08qDYgGQ/hqdefault.jpg)](https://youtu.be/BEd08qDYgGQ)
 
 ## Remnux - Viper
 
