@@ -1,5 +1,5 @@
 ---
-title: "Defense 101: Vawtrak"
+title: "Defense 101"
 date: 2017-06-24T04:46:35Z
 ---
 

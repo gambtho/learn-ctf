@@ -23,6 +23,8 @@ Extracting files from HTTP traffic is surprisingly easy with Wireshark.
 
 Extracting files from an FTP stream is slightly more complicated, but Wireshark does make it easy for you.
 
+
+
 ## Remnux - Viper
 
 In order to start giving us a taste of malware file triage analysis, we will learn a few basic concepts and walk through a basic example with the web interface of [Viper](http://viper.li/).
@@ -62,7 +64,7 @@ Click on the Modules link.  Notice there are many modules and within each module
 
 ![Viper](/defense/viper_module_selection.png)
 
-Notice it found the CompanyName and File Description related to Sysinternals within the executable.  The version number and copyright information is present.  We get a timestamp for the executable as well as some directory paths and mimetype for the file.  Occasionally an attacker won't realize that the directory path for their development environment is present in the executable they generate and can allow for detection and attribution to a particular adversary.
+Notice it found the CompanyName and File Description related to Sysinternals within the executable.  The version number and copyright information is present.  We get a timestamp for the executable as well as the mimetype for the file.
 
 Let's run the "PE - Parse PE32 files" Module and select the "PEID" command and click the "Run" button.  PE ID is a tool that provides information about what language an executable was written in and whether or not the file appears to have been packed.  Packing executables is a practice that commercial software does as well as malware in an effort to make it more difficult to reverse engineer.
 
@@ -70,7 +72,7 @@ Now run the "Digital Certificates" command.  Notice it can generate the hash of 
 
 ![Viper](/defense/viper_digital_certificate.png)
 
-Other areas you may want to explore include the Sections, Imports, and Exports of a binary.  The sections and the entropy of each section can be used to help determine if a file is packed.  The imports and exports can provide information about what functionality a file might have.
+Other areas you may want to explore include the Sections, Imports, and Exports of a binary.  The sections and the entropy of each section can be used to help determine if a file is packed.  The imports and exports can provide information about what functionality a file might have.  Imports and exports of an executable are so important that their values themselves can be used to identify families of malware.  For more information, read about [Tracking Malware with Import Hashing](https://www.fireeye.com/blog/threat-research/2014/01/tracking-malware-import-hashing.html).
 
 There is a module to look for shellcode, usually you're looking for this embedded in a file type (e.g. pdf, office document etc).  It is also known to have a lot of false positives.
 
@@ -80,6 +82,6 @@ Analyzing the strings of an executable is also a must-do step in basic file anal
 
 However, if the file is not packed, it can reveal the structure of HTTP requests, configuration of malware, as well as IP addresses and domains the malware uses.
 
-If you run the "Strings - Extract strings" function within Viper and search down for "http:", you'll notice several Microsoft domains and subdomains within this file as well as function names that the executable uses that can provide some indication of what the executable does if it were to be executed.
+If you run the "Strings - Extract strings" function within Viper and search down for "http:", you'll notice several Microsoft domains and subdomains within this file as well as function names that the executable uses that can provide some indication of what the executable does if it were to be executed.  Occasionally an attacker won't realize that the directory path for their development environment is present in the executable they generate and can allow for detection and attribution to a particular adversary.
 
 There are a lot of tools here and we're not attempting to cover all malware analysis in this tutorial, rather this was intended to be an introduction to some of the tools available.  
