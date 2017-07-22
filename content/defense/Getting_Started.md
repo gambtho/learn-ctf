@@ -36,4 +36,4 @@ After starting docker compose, you should be able to open a web browser and navi
 
 Not that your environment is working, let's start [The First Scenario](/defense/defense101/)
 
-<a href="/defense/introduction/"><button type="button" class="btn btn-Primary btn-arrow-left">Prev Article</button></a>&nbsp&nbsp&nbsp&nbsp<a href="/defense/defense101/"><button type="button" class="btn btn-Primary btn-arrow-right">Next Article</button></a>
+<a href="/defense/introduction/"><button type="button" class="btn btn-Primary btn-arrow-left">Prev Article</button></a>     <a href="/defense/defense101/"><button type="button" class="btn btn-Primary btn-arrow-right">Next Article</button></a>
