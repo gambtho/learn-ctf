@@ -7,23 +7,13 @@ date: 2017-06-23T04:46:35Z
 
 Congratulations!  You finished Defense 101 and are moving up in the world.  The last scenario consisted of challenges requiring basic log analysis skills and basic threat intelligence research to accomplish.  This scenario will build on what we learned in Defense 101 and extend to other areas like file triage analysis and some WireShark techniques that are often required.  Below we will run through a few examples and resources that will help you complete this scenario.
 
-## Wireshark File Extraction from HTTP Traffic
+## Wireshark File Extraction from Network Traffic
 
 Be sure you have downloaded [Wireshark](https://www.wireshark.org/).  You may also want to explore other tools like NetworkMiner, but for the purposes of this CTF, we'll be using Wireshark.
 
-Getting started with Wireshark
+Extracting files from HTTP traffic is surprisingly easy with Wireshark.  The video below will demonstrate how to extract the file using Wireshark's built-in file object parsing as well as how to manually export the raw bytes to a local file.  Some protocols, like FTP will require the later method to extract files from network streams.
 
-
-## Wireshark File Extraction from HTTP Traffic
-
-Extracting files from HTTP traffic is surprisingly easy with Wireshark.  
-
-
-## WireShark File Extraction from FTP Traffic
-
-Extracting files from an FTP stream is slightly more complicated, but Wireshark does make it easy for you.
-
-
+[![Wireshark Extracting Files](https://i.ytimg.com/vi/BEd08qDYgGQ/hqdefault.jpg)](https://youtu.be/BEd08qDYgGQ)
 
 ## Remnux - Viper
 
@@ -85,3 +75,6 @@ However, if the file is not packed, it can reveal the structure of HTTP requests
 If you run the "Strings - Extract strings" function within Viper and search down for "http:", you'll notice several Microsoft domains and subdomains within this file as well as function names that the executable uses that can provide some indication of what the executable does if it were to be executed.  Occasionally an attacker won't realize that the directory path for their development environment is present in the executable they generate and can allow for detection and attribution to a particular adversary.
 
 There are a lot of tools here and we're not attempting to cover all malware analysis in this tutorial, rather this was intended to be an introduction to some of the tools available.  
+
+
+<a href="http://learn.greyhatctf.com/defense/defense101/"><button type="button" class="btn btn-Primary btn-arrow-left">Prev Article</button></a>
