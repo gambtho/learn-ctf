@@ -77,4 +77,4 @@ If you run the "Strings - Extract strings" function within Viper and search down
 There are a lot of tools here and we're not attempting to cover all malware analysis in this tutorial, rather this was intended to be an introduction to some of the tools available.  
 
 
-<a href="http://learn.greyhatctf.com/defense/defense101/"><button type="button" class="btn btn-Primary btn-arrow-left">Prev Article</button></a>
+<a href="/defense/defense101/"><button type="button" class="btn btn-Primary btn-arrow-left">Prev Article</button></a>
