@@ -34,4 +34,6 @@ After starting docker compose, you should be able to open a web browser and navi
 
 ![Kibana Image](/defense/navigate_to_kibana.png)
 
-Not that your environment is working, let's start [The First Scenario](/defense/scenario_01/)
+Not that your environment is working, let's start [The First Scenario](/defense/defense101/)
+
+<a href="/defense/introduction/"><button type="button" class="btn btn-Primary btn-arrow-left">Prev Article</button></a>&nbsp&nbsp&nbsp&nbsp<a href="/defense/defense101/"><button type="button" class="btn btn-Primary btn-arrow-right">Next Article</button></a>
