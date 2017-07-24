@@ -1,6 +1,6 @@
 ---
 title: "Nmap"
-date: 2017-07-01T10:03:27Z
+date: 2017-07-24T17:03:44Z
 draft: true
 ---
 
@@ -22,9 +22,9 @@ nmap [Scan Type(s)] [Options] {target specification}
 ```
 
 # Basic Examples
-Scan single network
+Ping scan single network and disable DNS lookup
 ```bash
-nmap 192.168.222.0/24
+nmap -n -sn 10.0.1.0/24
 ```
 ![Nmap default scan](/attack/nmap_default.png)
 
