@@ -11,13 +11,13 @@ One of the key features of web CMSs is that they typically support dynamic web c
 
 # Getting a PHP Reverse Shell on WordPress
 First you need to login to the WordPress admin console. You'll typically see a login page like the screen shot below.
-![WordPress Login](http://learn.greyhatctf.com/attack/wp_login.png/)
+![WordPress Login](/attack/wp_login.png/)
 
 After a successful login you'll see a WordPress dashboard. On the left navigation menu go to Appearance -> Editor.
-![WordPress Dashboard](http://learn.greyhatctf.com/attack/wp_dashboard.png/)
+![WordPress Dashboard](/attack/wp_dashboard.png/)
 
 From the editor click on the Theme Footer link on the right navigation menu under Templates. The footer is contained in a file called footer.php. The nice thing about the footer is that it's contained on every page at the bottom and any PHP code contained in the footer will get executed when you browse to a page with that theme. You can use other template files with PHP code but the footer.php works well for this example.
-![WordPress Editor](http://learn.greyhatctf.com/attack/wp_editor.png/)
+![WordPress Editor](/attack/wp_editor.png/)
 
 At the top of the footer.php file you'll see PHP code contained in angle brackets.
 ```
@@ -48,7 +48,7 @@ nc -lvp 4444
 Replace the code starting with ```<?php``` and ending with ```?>``` with the reverse shell code. then click Update File. You'll see File edited successfully at the top of the page.
 
 Now all you have to do browse to a page on the WordPress site and your listener should catch a reverse shell from the web server.
-![Reverse shell on netcat listener](http://learn.greyhatctf.com/attack/nc_php_reverse.png/).
+![Reverse shell on netcat listener](/attack/nc_php_reverse.png/).
 
 Executing ```whoami``` shows that you are running on the shell as ```daemon```, often instead of ```daemon``` you'll the user ```www-data```.
 
