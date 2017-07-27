@@ -1,6 +1,6 @@
 ---
 title: "Linux Privilege Escalation"
-date: 2017-07-25T18:26:29Z
+date: 2017-07-27T12:27:05Z
 draft: true
 ---
 
