@@ -10,7 +10,7 @@ The Damn Vulnerable Web Application (DVWA) is purposely vulnerable web applicati
 # Accessing DVWA
 Ensure that you can access the lab environment through the VPN tunnel. See [Accessing the Lab](http://learn.greyhatctf.com/attack/accessinglab/) for more details on VPN connection configurations.
 
-Once you have your VPN connection up, open a web browser and go to http:/<DVWA IP>/dvwa/
+Once you have your VPN connection up, open a web browser and go to http://10.0.1.107/dvwa/. This will only work with an active VPN connection.
 
 You'll see a web page with a login form. 
 ![DVWA login](/attack/dvwa_login.png)
@@ -36,3 +36,4 @@ That's all there is to it. Don't be afraid to try new things and don't worry abo
 Happy hacking!
 
 # References
+[DVWA - Damn Vulnerable Web Application](http://www.dvwa.co.uk/)
