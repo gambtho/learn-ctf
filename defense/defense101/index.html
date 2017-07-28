@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="alternate" href="/index.xml" type="application/rss+xml" title="GreyHat CTF Educational Content">
+		<link rel="icon" href="http://learn.greyhatctf.com/favicon.ico">
+		<title>Defense 101 - GreyHat CTF Educational Content</title>
+		
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/highlight/default.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/bootstrap.min.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/theme.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/bootie-docs.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/site.css">
+	</head>
+
+<body role="document">
+
+	
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="http://learn.greyhatctf.com/">GreyHat CTF Educational Content</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li ><a href="http://learn.greyhatctf.com/">Home</a></li>
+			
+			
+				
+					<li ><a href="/attack/">attack</a></li>
+				
+					<li ><a href="/defense/">defense</a></li>
+				
+			
+				
+				</ul>
+				
+			</div>
+		</div>
+	</nav>
+
+<div class="container">
+
+
+<div class="row">
+	<div class="col-sm-8 doc-main">
+		<main role="main">
+			<article>
+				<a id="title"></a>
+				<h1 class="doc-entry-title">Defense 101</h1>
+				<div class="doc-entry-meta">
+					<span><time datetime="2017-06-24">June 24, 2017</time></span>
+				</div>
+				<section>
+					
+
+<h1 id="welcome-to-defense-101">Welcome to Defense 101</h1>
+
+<p>In this first scenario, we will become familiar with Elasticsearch and Kibana as well as get our feet wet digging into a well known banking trojan.  We&rsquo;ll start off easy and progress into increasingly challenging questions as we go.</p>
+
+<h2 id="your-elastic-stack-instance">Your Elastic Stack Instance</h2>
+
+<p>You should now have a working instance of Elastic Stack running locally.  If you plan to continue to use that as your analysis platform, then you will find the resources below helpful.  If you instead plan to use some other tool for log analysis, then you are certainly welcome to.</p>
+
+<p>The only things you should have to do after cloning <a href="https://github.com/egaus/greyhatctf_elk">the repo</a>, installing docker, and docker-compose, is to:</p>
+
+<ol>
+<li>Change to the root directory (e.g. cd greyhatctf_elk directory)</li>
+<li>Run <code>docker-compose build</code></li>
+<li>Then run <code>docker-compose up</code></li>
+<li>Finally, you need to load logs for this scenario.  To do so, copy the file scenario_01.tar.gz from the &ldquo;scenarios&rdquo; directory into the &ldquo;DROP_SCENARIO_FILES_HERE&rdquo; directory.  After this is done the file you copied will be processed, timestamps will be automatically adjusted, and the logs will be loaded into your <a href="http://localhost:5601">Elastic Stack instance</a>.  The file scenario_01.tar.gz will be deleted from the DROP_SCENARIO_FILES_HERE directory, so be sure to copy, not move, the file or you&rsquo;ll need to re-download the content from Github.</li>
+</ol>
+
+<h2 id="start-exploring-the-logs">Start Exploring the Logs</h2>
+
+<p>You should now have a working instance of Kibana.  Upon loading logs following the instructions above, you need to setup the index mappings.  This will largely be done for you.  Simply click on the Management area of Kibana (you will probably be redirected there automatically).</p>
+
+<p><img src="/defense/navigate_to_kibana.png" alt="Kibana Image" /></p>
+
+<p>Then click the &ldquo;Create&rdquo; button towards the bottom of the screen and you should see that Kibana has already mapped the fields for you.</p>
+
+<p><img src="/defense/kibana_index_mapping.png" alt="Kibana Image" /></p>
+
+<p>Next click on the Discover tab and you should see some logs.  In the upper right-hand corner of the screen is a time-picker.  At ingest, the logs have been modified for you to have a beginning time of 10 hours ago.  You will likely work on this challenge for a few hours, so it is recommended that you set the time picker by clicking on &ldquo;Quick&rdquo; &gt; &ldquo;Last 24 hours&rdquo; and then you won&rsquo;t need to adjust the date / time as much as you perform your analysis.</p>
+
+<p><img src="/defense/discover_time_picker.png" alt="Kibana Image" /></p>
+
+<h2 id="kibana-discover">Kibana Discover</h2>
+
+<p>You know where to set the time picker, but now you want to query the event logs during the time period in question.  In the search bar you can enter queries in the Lucene query language.  If you are not familiar, spend a little time looking over <a href="https://lucene.apache.org/core/2_9_4/queryparsersyntax.html">Lucene Syntax</a> or <a href="https://www.timroes.de/2016/05/29/elasticsearch-kibana-queries-in-depth-tutorial/">Kibana Queries In Depth</a>.</p>
+
+<p>The logs themselves were generated by Bro NSM.  We&rsquo;ll cover some important concepts, log types and fields here, but you will no doubt want to become more familiar with <a href="https://www.bro.org/sphinx/script-reference/log-files.html">Bro log fields</a> and their meaning.</p>
+
+<p>You should have multiple log types loaded at this point.  As you explore, we recommend starting with something familiar by running a search for something like <strong>type:bro_http</strong>.  This is our first Lucene query and it is a term search for the text &ldquo;bro_http&rdquo; against the field called &ldquo;type&rdquo;.  This search will return all of the http events that bro identified and provided event metadata for.</p>
+
+<h2 id="kibana-introduction">Kibana Introduction</h2>
+
+<p>If you are relatively new to Kibana, click on the Kibana image below to get access to several Kibana training videos to get you started making powerful searches and insightful visualizations.</p>
+
+<p><a href="https://p.brightact.com/p/1477331815405265"><img src="/defense/kibana_logo.png" alt="Kibana Training Resources" /></a></p>
+
+<h2 id="check-out-some-bro-logs">Check Out Some Bro logs</h2>
+
+<p>Now that you have logs loaded and you have reviewed some of the Kibana usage material, we can start exploring Bro logs in some detail.  Bro Network Security Monitor (NSM) allow analysts to review logs and determine what happened on the network.  Bro has a wide array of <a href="https://www.bro.org/sphinx/script-reference/proto-analyzers.html">protocol analyzers</a>.</p>
+
+<p>The first log type we&rsquo;ll look at are conn logs.  These logs are similar to netflow logs, where we are given the source and destination IP addresses (in Bro, these are id.orig_h and id.resp_h), source and destination ports (id.orig_p and id.resp_p), and size and duration of transfer.  Go ahead and search for them using the search <strong>type:bro_conn</strong>.  Bro conn logs are generated based on network sessions.  The <strong>uid</strong> is a very important field in the Bro logging framework.  When a network connection is identified by Bro, based on a series of configurable timers, Bro will decide when to log network session events.  If the protocol is determined to be one with a protocol analyzer defined, Bro will additionally run the script for the analyzer.  In the case of http, bro will create a bro_http log in and link it to the bro_conn log using the <strong>uid</strong> value from the session.  We can use the uid value to aggregate context about a network connection.</p>
+
+<p>Let&rsquo;s look at an example.  Search for <strong>type:bro_conn AND uid:CiODE54vrEjjnpk5Vk</strong>.  This is a conn event and we are given information at the session level.  If we change our search to look just for the particular uid (<strong>uid:CiODE54vrEjjnpk5Vk</strong>), we&rsquo;ll see the other metadata bro recorded about this network &ldquo;connection&rdquo; and get the additional details about the associated DNS request and response.</p>
+
+<p>Overview of <a href="http://gauss.ececs.uc.edu/Courses/c6055/pdf/bro_log_vars.pdf">Bro log types and fields</a>.</p>
+
+<h2 id="getting-started-with-the-exercises-and-bro-logs">Getting started with the exercises and Bro logs</h2>
+
+<p><INSERT GETTING STARTED VIDEO HERE></p>
+
+<h2 id="apply-threat-intelligence">Apply Threat Intelligence</h2>
+
+<p>Judicious use of threat intelligence can significantly enhance a teams ability to identify attacks and consistently catch the same adversary in the future even when some of their tools or methods are updated for the next campaign.  Take a moment to review these two articles about the entire attack scenario involving Vawtrak.  Pay special attention to how Vawtrak works and what it might look like in network event logs.</p>
+
+<ul>
+<li><a href="https://www.fidelissecurity.com/threatgeek/2016/05/vawtrak-trojan-bank-it-evolving">https://www.fidelissecurity.com/threatgeek/2016/05/vawtrak-trojan-bank-it-evolving</a></li>
+<li><a href="https://www.proofpoint.com/us/threat-insight/post/Vawtrak-UrlZone-Banking-Trojans-Target-Japan">https://www.proofpoint.com/us/threat-insight/post/Vawtrak-UrlZone-Banking-Trojans-Target-Japan</a></li>
+</ul>
+
+<p>Scenario: Yesterday your organization saw a wave of phishing emails with a successful lure that unfortunately many fell for.  Those who were on premise were protected because the malware failed to download due to on-site preventative controls.  Unfortunately, those who work remotely and some 3rd party contractors were unprotected.  Some of these employees are now likely on the network today and we need to identify systems infected with the Vawtrak banking trojan.  Your mission is to explore the sample logs, determine how to identify Vawtrak is active to scope the infections, and detect any future infections.</p>
+
+<p><a href="/defense/getting_started/"><button type="button" class="btn btn-Primary btn-arrow-left">Prev Article</button></a>     <a href="/defense/defense201/"><button type="button" class="btn btn-Primary btn-arrow-right">Next Article</button></a></p>
+
+				</section>
+			</article>
+		</main>
+	</div> 
+
+	
+
+<div class="col-sm-3 col-sm-offset-1 doc-sidebar">
+	<div id="sidebar">
+	<div class="sidebar-module">
+		<div class="sidebar-toc">
+			<h4 class="sidebar-heading">Table of Contents</h4>
+			<ul>
+				<li><strong><a href="#title">Defense 101</a></strong></li>
+			</ul>
+			<nav id="TableOfContents">
+<ul>
+<li><a href="#welcome-to-defense-101">Welcome to Defense 101</a>
+<ul>
+<li><a href="#your-elastic-stack-instance">Your Elastic Stack Instance</a></li>
+<li><a href="#start-exploring-the-logs">Start Exploring the Logs</a></li>
+<li><a href="#kibana-discover">Kibana Discover</a></li>
+<li><a href="#kibana-introduction">Kibana Introduction</a></li>
+<li><a href="#check-out-some-bro-logs">Check Out Some Bro logs</a></li>
+<li><a href="#getting-started-with-the-exercises-and-bro-logs">Getting started with the exercises and Bro logs</a></li>
+<li><a href="#apply-threat-intelligence">Apply Threat Intelligence</a></li>
+</ul></li>
+</ul>
+</nav>
+		</div>
+	</div>
+	<div class="sidebar-module">
+		<h4 class="sidebar-heading">Pages in Categories</h4>
+		<ul class="sidebar-category-list">
+		
+			<li>
+				<a href="http://learn.greyhatctf.com/categories/attack">
+					<span class="doc-list-category">Attack</span>
+				</a>
+				<ul>
+					<li><a href="/attack/attack_lifecycle/">The Cyber Attack Lifecycle #Draft</a>
+					</li>
+				
+				</ul>
+			</li>
+		
+			<li>
+				<a href="http://learn.greyhatctf.com/categories/defense">
+					<span class="doc-list-category">Defense</span>
+				</a>
+				<ul>
+					<li><a href="/defense/introduction/">Threat Detection Introduction</a>
+					</li>
+				
+				</ul>
+			</li>
+		
+		</ul>
+	</div>
+	<div class="sidebar-module">
+		<h4 class="sidebar-heading">Tags</h4>
+		<div class="tag-box">
+		
+			<a class="tag-item" href="http://learn.greyhatctf.com/tags/logs">logs</a>
+		
+			<a class="tag-item" href="http://learn.greyhatctf.com/tags/reference">reference</a>
+		
+		</div>
+	</div>
+	</div>
+</div>
+
+</div> 
+
+
+
+<footer class="doc-footer">
+  <p>&copy; 2017 GreyHat CTF Educational Content</p>
+  <p>Powered by <a href="http://gohugo.io" target="_blank">Hugo</a>,</p>
+</footer>
+

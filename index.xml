@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>_index on GreyHat CTF Educational Content</title>
+    <link>http://learn.greyhatctf.com/</link>
+    <description>Recent content in _index on GreyHat CTF Educational Content</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 01 Jul 2017 20:27:14 +0000</lastBuildDate>
+    
+	<atom:link href="http://learn.greyhatctf.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Using DVWA</title>
+      <link>http://learn.greyhatctf.com/attack/using_dvwa/</link>
+      <pubDate>Fri, 28 Jul 2017 15:28:00 +0000</pubDate>
+      
+      <guid>http://learn.greyhatctf.com/attack/using_dvwa/</guid>
+      <description>Introduction The Damn Vulnerable Web Application (DVWA) is purposely vulnerable web application that is hosted in our lab. The application is designed to assist training attacking various web application vulnerabilities. Most of the common web vulnerabilities are tested including cross site scripting, SQL injection, local file inclusion, remote file inclusion, directory traversal, command injection, and weak credentials.
+Accessing DVWA Ensure that you can access the lab environment through the VPN tunnel.</description>
+    </item>
+    
+    <item>
+      <title>Linux Privilege Escalation</title>
+      <link>http://learn.greyhatctf.com/attack/linuxprivesc/</link>
+      <pubDate>Thu, 27 Jul 2017 12:27:05 +0000</pubDate>
+      
+      <guid>http://learn.greyhatctf.com/attack/linuxprivesc/</guid>
+      <description>Introduction So you&amp;rsquo;ve got a shell on your target but you&amp;rsquo;re on with a limited user account. You need root privileges to get finish exploiting your target. The question then is, &amp;ldquo;How do I get root?&amp;rdquo;. This article will give you some techniques to escalate to root on Linux systems.
+Enumerate the system The first thing you want to do is the gather information about the Linux host you are on.</description>
+    </item>
+    
+    <item>
+      <title>Linux Exploits</title>
+      <link>http://learn.greyhatctf.com/attack/linux_exploits/</link>
+      <pubDate>Tue, 25 Jul 2017 18:26:41 +0000</pubDate>
+      
+      <guid>http://learn.greyhatctf.com/attack/linux_exploits/</guid>
+      <description>Introduction In the Linux Privilege Escalation article we explained steps you can take to help you gain root privileges. Sometimes you&amp;rsquo;ll need to exploit a system vulnerability to gain root privileges. In this article we explain ways to exploit Linux systems once you have a shell.
+Search for an appropriate exploit Using the system information you&amp;rsquo;ve gained from enumeration, search for appropriate exploits based on the OS version and installed applications.</description>
+    </item>
+    
+    <item>
+      <title>Nmap</title>
+      <link>http://learn.greyhatctf.com/attack/nmap/</link>
+      <pubDate>Mon, 24 Jul 2017 17:03:44 +0000</pubDate>
+      
+      <guid>http://learn.greyhatctf.com/attack/nmap/</guid>
+      <description>Introduction Nmap is a widely used network scanning and mapping tool. It is an open source command line tool, but there are GUI front ends such as Zenmap that can be used with Nmap.
+Nnap can be used to scan networks or single hosts. It uses a variety of scanning techniques that include standard IP implementations and modified IP implementations. Nmap is also extensible using the Nmap Scripting Engine (NSE) to write custom scanning scripts.</description>
+    </item>
+    
+    <item>
+      <title>Web CMS PHP Reverse Shell</title>
+      <link>http://learn.greyhatctf.com/attack/cmsphp/</link>
+      <pubDate>Mon, 24 Jul 2017 16:42:46 +0000</pubDate>
+      
+      <guid>http://learn.greyhatctf.com/attack/cmsphp/</guid>
+      <description>Introduction A web content management system (CMS) is a application which supports the creation and management of web pages. The most popular of the web CMSs is WordPress. The two other most popular CMSs after WordPress are Joomla and Drupal. Web CMS generally perform similar functions so attacks on WordPress CMSs will tend to generalize to other CMSs.
+One of the key features of web CMSs is that they typically support dynamic web content through the usage of PHP which is a server-side scripting language.</description>
+    </item>
+    
+    <item>
+      <title>Password Attacks</title>
+      <link>http://learn.greyhatctf.com/attack/passwordattacks/</link>
+      <pubDate>Thu, 20 Jul 2017 03:48:12 +0000</pubDate>
+      
+      <guid>http://learn.greyhatctf.com/attack/passwordattacks/</guid>
+      <description>Introduction Passwords can be attacked in a variety of ways. For our purposes, password attacks can be broadly categorized into online and offline password attacks.
+We&amp;rsquo;ll define online password attacks as the type where services with remote login available can be attacked by simply trying lots of passwords until you find a credential that works. We&amp;rsquo;ll define offline password attacks as the type where you have a list of password hashes and you can attempt find matching hashes by computing hashes over password strings until you get a match.</description>
+    </item>
+    
+    <item>
+      <title>The Cyber Attack Lifecycle</title>
+      <link>http://learn.greyhatctf.com/attack/attack_lifecycle/</link>
+      <pubDate>Mon, 17 Jul 2017 15:14:05 +0000</pubDate>
+      
+      <guid>http://learn.greyhatctf.com/attack/attack_lifecycle/</guid>
+      <description>Introduction Cyber attackers have an operating cycle that is common across many attacks. This cycle can be called the attack lifecycle. There are various models to explain how the lifecycle works by many different organizations including Lockheed Martin, Palo Alto Networks, and Mandiant (see References section for links). If you read each variation of the lifecycle you will find that you can summarize the lifecycle into reconnaissance, exploitation, privilege escalation, and actions on objective phases.</description>
+    </item>
+    
+    <item>
+      <title>Accessing the Lab</title>
+      <link>http://learn.greyhatctf.com/attack/accessinglab/</link>
+      <pubDate>Sat, 15 Jul 2017 18:47:46 +0000</pubDate>
+      
+      <guid>http://learn.greyhatctf.com/attack/accessinglab/</guid>
+      <description>Introduction The lab environment that we are hosting contains the virtual machines (VMs) that you&amp;rsquo;ll need to access in order to play in the CTF. We use OpenVPN to private a secure tunnel to the lab environment from your Internet connection.
+OpenVPN is an open source VPN software application that allows configuration of VPN services for servers and clients. Our lab network is configured to use OpenVPN to connect to our CTF machines in our attack scenarios.</description>
+    </item>
+    
+    <item>
+      <title>We Love Shells</title>
+      <link>http://learn.greyhatctf.com/attack/shells/</link>
+      <pubDate>Thu, 06 Jul 2017 03:00:20 +0000</pubDate>
+      
+      <guid>http://learn.greyhatctf.com/attack/shells/</guid>
+      <description>Introduction A shell is a user interface that gives interactive access to a host. Typically shells that attackers user will be on a command line interface (CLI).
+On Linux the most common shell is Bash and on Windows the most common shell is cmd.exe and PowerShell. The shells on both Linux and Windows systems allow a user to interact with the system in almost any way he wants as long he has the appropriate permissions.</description>
+    </item>
+    
+    <item>
+      <title>Enumerating Web Sites</title>
+      <link>http://learn.greyhatctf.com/attack/enumerating_websites/</link>
+      <pubDate>Tue, 04 Jul 2017 02:55:11 +0000</pubDate>
+      
+      <guid>http://learn.greyhatctf.com/attack/enumerating_websites/</guid>
+      <description>Introduction Often times networks are accessible through some sort of public web site. One of the keys to successfully gaining a foothold on a network is to enumerate a website and gather more information and find vulnerabilities.
+There are a variety of tools to automate the task of enumerating websites. We won&amp;rsquo;t cover all of the tools here in this article but we will cover some of the more popular tools.</description>
+    </item>
+    
+    <item>
+      <title>Threat Detection Introduction</title>
+      <link>http://learn.greyhatctf.com/defense/introduction/</link>
+      <pubDate>Mon, 26 Jun 2017 04:46:35 +0000</pubDate>
+      
+      <guid>http://learn.greyhatctf.com/defense/introduction/</guid>
+      <description>Purpose The purpose of this training material is to provide enough basics to get a good start on each of the challenges. At the same time, you will be acquiring and practicing the necessary skills to be an effective cyber threat detection analyst.
+Guiding Principles Whether we like it or not, we must accept that our systems and networks will be compromised and we need to assume that is already the case.</description>
+    </item>
+    
+    <item>
+      <title>Getting ELK Running</title>
+      <link>http://learn.greyhatctf.com/defense/getting_started/</link>
+      <pubDate>Sun, 25 Jun 2017 04:46:35 +0000</pubDate>
+      
+      <guid>http://learn.greyhatctf.com/defense/getting_started/</guid>
+      <description>Getting Elastic Stack Running In the first set of challenges, we will be analyzing Bro Network Security Monitoring (NSM) logs consisting of both benign and malicious traffic. If you aren&amp;rsquo;t already familiar with Bro NSM logs, you soon will be. For this set of challenges, you are provided with a set of tools, mostly docker-compose and docker files that launch analysis environments and give you access to the forensic artifacts to base your analysis on.</description>
+    </item>
+    
+    <item>
+      <title>Defense 101</title>
+      <link>http://learn.greyhatctf.com/defense/defense101/</link>
+      <pubDate>Sat, 24 Jun 2017 04:46:35 +0000</pubDate>
+      
+      <guid>http://learn.greyhatctf.com/defense/defense101/</guid>
+      <description>Welcome to Defense 101 In this first scenario, we will become familiar with Elasticsearch and Kibana as well as get our feet wet digging into a well known banking trojan. We&amp;rsquo;ll start off easy and progress into increasingly challenging questions as we go.
+Your Elastic Stack Instance You should now have a working instance of Elastic Stack running locally. If you plan to continue to use that as your analysis platform, then you will find the resources below helpful.</description>
+    </item>
+    
+    <item>
+      <title>Defense 201</title>
+      <link>http://learn.greyhatctf.com/defense/defense201/</link>
+      <pubDate>Fri, 23 Jun 2017 04:46:35 +0000</pubDate>
+      
+      <guid>http://learn.greyhatctf.com/defense/defense201/</guid>
+      <description>Welcome to Defense 201 Congratulations! You finished Defense 101 and are moving up in the world. The last scenario consisted of challenges requiring basic log analysis skills and basic threat intelligence research to accomplish. This scenario will build on what we learned in Defense 101 and extend to other areas like file triage analysis and some WireShark techniques that are often required. Below we will run through a few examples and resources that will help you complete this scenario.</description>
+    </item>
+    
+  </channel>
+</rss>

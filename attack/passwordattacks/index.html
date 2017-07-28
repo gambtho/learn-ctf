@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="alternate" href="/index.xml" type="application/rss+xml" title="GreyHat CTF Educational Content">
+		<link rel="icon" href="http://learn.greyhatctf.com/favicon.ico">
+		<title>Password Attacks - GreyHat CTF Educational Content</title>
+		
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/highlight/default.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/bootstrap.min.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/theme.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/bootie-docs.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/site.css">
+	</head>
+
+<body role="document">
+
+	
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="http://learn.greyhatctf.com/">GreyHat CTF Educational Content</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li ><a href="http://learn.greyhatctf.com/">Home</a></li>
+			
+			
+				
+					<li ><a href="/attack/">attack</a></li>
+				
+					<li ><a href="/defense/">defense</a></li>
+				
+			
+				
+				</ul>
+				
+			</div>
+		</div>
+	</nav>
+
+<div class="container">
+
+
+<div class="row">
+	<div class="col-sm-8 doc-main">
+		<main role="main">
+			<article>
+				<a id="title"></a>
+				<h1 class="doc-entry-title">Password Attacks</h1>
+				<div class="doc-entry-meta">
+					<span><time datetime="2017-07-20">July 20, 2017</time></span>
+				</div>
+				<section>
+					
+
+<h1 id="introduction">Introduction</h1>
+
+<p>Passwords can be attacked in a variety of ways. For our purposes, password attacks can be broadly categorized into online and offline password attacks.</p>
+
+<p>We&rsquo;ll define online password attacks as the type where services with remote login available can be attacked by simply trying lots of passwords until you find a credential that works. We&rsquo;ll define offline password attacks as the type where you have a list of password hashes and you can attempt find matching hashes by computing hashes over password strings until you get a match.</p>
+
+<h1 id="brute-force-vs-dictionary">Brute Force vs Dictionary</h1>
+
+<p>Password attacks can either be brute force or dictionary types in addition to being online or offline.</p>
+
+<h2 id="brute-force">Brute Force</h2>
+
+<p>Brute force attacks are password attacks where every password combination is exhaustively tested one by one. Brute force attacks in theory are always successful given enough time and resources. The main problem with brute force attacks is that the time complexity of brute forcing passwords is exponential (O(2ⁿ)) <a href="#notes">[1]</a> in the number of characters contained in the passwords. This means that given a long enough password, brute force password attacks are not practical in real situations.</p>
+
+<h2 id="dictionary">Dictionary</h2>
+
+<p>Dictionary attacks are password attacks where every password in a dictionary is tested for a match. Dictionaries can be quite large. For example the rockyou dictionary has 14,344,391 entries. But that&rsquo;s still much smaller than the number of unique passwords you have to check for an 8 character password.</p>
+
+<p>Many password dictionary files are freely available online. A good one is SecLists (3) in the references section. It&rsquo;s a GitHub repository containing numerous password files.</p>
+
+<h1 id="online-password-attacks">Online Password Attacks</h1>
+
+<p>Online password attacks are often used to gain access administrative access to a server. This could be via SSH, HTTP, FTP, etc.</p>
+
+<p>You need a user name and a password to conduct this attack. Finding valid user names is usually fairly easy and can be discovered during the reconnaissance and enumeration steps. If you don&rsquo;t have a user name you can try different user names and hopefully you find one that works.</p>
+
+<p>Once you have a valid user name you can attempt different passwords until you successfully login. You can attempt user name and password combinations manually and this sometimes works, however it is a very slow and tedious process.</p>
+
+<p>A better way to attempt online password attacks is by using automated tools to try lots of combinations user names and passwords for you. There are a variety of automated tools to automate online attacks but we will only focus on WPScan and Hydra.</p>
+
+<h2 id="wpscan">WPScan</h2>
+
+<p>As mentioned in the <a href="http://learn.greyhatctf.com/attack/enumerating_websites/">Enumerating Web Sites</a> article, WPScan can be used to quickly enumerate common user names as well as attempt dictionary based password attacks on WordPress login pages.</p>
+
+<p>Enumerate users</p>
+
+<pre><code>wpscan -u http://192.168.222.166/ -e u
+</code></pre>
+
+<p>Attempt to guess login for user with password list</p>
+
+<pre><code>wpscan -u http://192.168.222.166/ --wordlist /usr/share/john/password.lst --username user
+</code></pre>
+
+<h2 id="hydra">Hydra</h2>
+
+<p>Hydra is a more powerful general purpose online password attacker. All of the options available for Hydra are too extensive to list here so we will only cover a few basic usage examples. For more details check out the Hydra pages in the references section.</p>
+
+<p>Hydra is preinstalled on Kali Linux so you can just type <code>hydra</code> from the command line to start.</p>
+
+<h3 id="hydra-simple-examples">Hydra Simple Examples</h3>
+
+<p>Attempt all passwords in best1050.txt for user gandalf on SSH service located at 192.168.222.172</p>
+
+<pre><code>hydra -l gandalf -P best1050.txt ssh://192.168.222.172
+</code></pre>
+
+<p>Attempt all combinations of user names in top_shortlist.txt and passwords in  best1050.txt on SSH service located at 192.168.222.172</p>
+
+<pre><code>hydra -L top_shortlist.txt -P best1050.txt ssh://192.168.222.172
+</code></pre>
+
+<h3 id="hydra-for-attacking-http-logins">Hydra for Attacking HTTP logins</h3>
+
+<p>HTTP logins are more complex for setting up your Hydra command and different website will generally need different parameters which you will have to discover during your reconnaissance and enumeration.</p>
+
+<p>You&rsquo;ll need the following information to attack HTTP login pages</p>
+
+<ul>
+<li>URL</li>
+<li>GET or POST method for submitting login parameters</li>
+<li>Name of the user name variable and password variable used in the GET or POST request</li>
+<li>String in returned web page for an invalid login</li>
+</ul>
+
+<p>Once you have this information you can use the following syntax to start your dictionary attack.</p>
+
+<p>A generic WordPress example:</p>
+
+<pre><code>hydra 192.168.222.175 http-form-post &quot;/wp-login:log=^USER^&amp;pwd=^PASS^:Invalid username&quot; -L top_shortlist.txt -P 10k_most_common.txt
+</code></pre>
+
+<p>In the example above, Hydra will attack a login form located at <a href="http://192.168.222.175/wp-login">http://192.168.222.175/wp-login</a> with login parameters log for user name and pwd for the password and a string on the returned website for invalid login of <code>Invalid username</code>. We&rsquo;re attempting all user names from top_shortlist.txt and all passwords in 10k_most_common.txt.</p>
+
+<h1 id="offline-password-attacks">Offline password attacks</h1>
+
+<p>On most systems, passwords are not stored in plain text. Instead when users enter a password into a system, the system will compute a one way function (OWF), known as a hash function, on the password string and store only the hash. Hashes are one way in that given a hash value, you can&rsquo;t go back to compute the original value which was hashed. This is because a hash function is a lossy function. Given arbitrary sized input a hash function will output the same size output.</p>
+
+<p>Various hashing algorithms exist for hashing passwords. Hashing algorithms used for passwords are referred to as cryptographic hashing algorithms. Cryptographic hashing algorithms have special properties that make them resistant cryptanalytic attack. Crytographic hash functions are resistant to collisions, case where two different inputs result in the same hash value. They are also difficult to reverse, that is given any hash value, it is difficult to find the value that resulted in that hash value. Common cryptographic hashing algorithms are MD5, SHA-1, SHA256, and SHA512.</p>
+
+<p>Offline password attacks are generally the preferred way to conduct password attacks because offline password attacks are a much faster way to do dictionary attacks. The main problem with conducting offline password attacks is that you need a copy of the password hashes of the system you&rsquo;re trying to penetrate. One way of getting password hashes is to perform SQL injection on a web server to dump the password hashes of every user in the user table.</p>
+
+<p>Once you have a copy of the hashes, you can then attempt to compute the strings that results in the same hash. Since hashes are OWFs, you must compute the hash forward by inputting the string into the same hashing algorithm and checking for a match.</p>
+
+<p>There are many ways to automate this process but we will focus on John the Ripper.</p>
+
+<h2 id="john-the-ripper">John the Ripper</h2>
+
+<p>John the Ripper, usually just called John, is a popular offline password cracker. It&rsquo;s free but there are also paid Pro versions that have some additional features. For our purposes we will be using the free version of John.</p>
+
+<p>We&rsquo;ll focus on using dictionaries for cracking password hashes, because of the exponential complexity of brute force password cracking.</p>
+
+<p>Open a terminal. If you just type john (assuming it&rsquo;s installed) you&rsquo;ll get help output as shown below.</p>
+
+<pre><code>Usage: john [OPTIONS] [PASSWORD-FILES]
+--single[=SECTION]        &quot;single crack&quot; mode
+--wordlist[=FILE] --stdin wordlist mode, read words from FILE or stdin
+                  --pipe  like --stdin, but bulk reads, and allows rules
+--loopback[=FILE]         like --wordlist, but fetch words from a .pot file
+--dupe-suppression        suppress all dupes in wordlist (and force preload)
+--prince[=FILE]           PRINCE mode, read words from FILE
+--encoding=NAME           input encoding (eg. UTF-8, ISO-8859-1). See also
+                          doc/ENCODING and --list=hidden-options.
+--rules[=SECTION]         enable word mangling rules for wordlist modes
+--incremental[=MODE]      &quot;incremental&quot; mode [using section MODE]
+--mask=MASK               mask mode using MASK
+--markov[=OPTIONS]        &quot;Markov&quot; mode (see doc/MARKOV)
+--external=MODE           external mode or word filter
+--stdout[=LENGTH]         just output candidate passwords [cut at LENGTH]
+--restore[=NAME]          restore an interrupted session [called NAME]
+--session=NAME            give a new session the NAME
+--status[=NAME]           print status of a session [called NAME]
+--make-charset=FILE       make a charset file. It will be overwritten
+--show[=LEFT]             show cracked passwords [if =LEFT, then uncracked]
+--test[=TIME]             run tests and benchmarks for TIME seconds each
+--users=[-]LOGIN|UID[,..] [do not] load this (these) user(s) only
+--groups=[-]GID[,..]      load users [not] of this (these) group(s) only
+--shells=[-]SHELL[,..]    load users with[out] this (these) shell(s) only
+--salts=[-]COUNT[:MAX]    load salts with[out] COUNT [to MAX] hashes
+--save-memory=LEVEL       enable memory saving, at LEVEL 1..3
+--node=MIN[-MAX]/TOTAL    this node's number range out of TOTAL count
+--fork=N                  fork N processes
+--pot=NAME                pot file to use
+--list=WHAT               list capabilities, see --list=help or doc/OPTIONS
+--format=NAME             force hash of type NAME. The supported formats can
+                          be seen with --list=formats and --list=subformats
+</code></pre>
+
+<h3 id="unshadowing-linux-passwords">Unshadowing Linux Passwords</h3>
+
+<p>In earlier versions of Linux password hashes were stored by default in /etc/passwd which is a world-readable text file containing a list of users and associated password hashes.</p>
+
+<p>Nowadays by default on most Linux systems, password hashes are not stored directly in /etc/passwd. Instead they are stored in the /etc/shadow file which readable only with root privileges.</p>
+
+<p>The /etc/passwd file has GECOS information and login shell information that you can use with John combined with the hashes from the /etc/shadow file. You can use a built-in utility called unshadow to merge the two files together. The syntax is simple.</p>
+
+<pre><code>unshadow /etc/passwd /etc/shadow &gt; password_hashes.txt
+</code></pre>
+
+<h3 id="example">Example</h3>
+
+<p>Since we&rsquo;re using a dictionary we&rsquo;ll need to use the &ndash;wordlist option. In this example we&rsquo;re using the rockyou dictionary and a text file containing password hashes in password_hashes.txt.</p>
+
+<pre><code>john --wordlist=rockyou.txt password_hashes.txt
+</code></pre>
+
+<p>As password hashes are cracked, the results will print to the screen. In the screenshot below you can see that there are three password hashes loaded using the SHA512 hashing algorithm. Only one hash has been cracked so far (newbie) with a very weak password of &ldquo;123456789&rdquo;. The other two are still being attempted by john but may or may not finish depending on whether or not the dictionary contains the password used.</p>
+
+<p><img src="/attack/john.png" alt="John" /></p>
+
+<p>Remember to use a text file consisting of one hash entry per line. I strongly recommend that you read the documentation for more specifics on how to use John.</p>
+
+<h1 id="notes">Notes</h1>
+
+<ol>
+<li>It&rsquo;s more accurate to say that password complexity is defined by O(bⁿ) where n is the length of the password and b is the size of the character set used in the password. Typical passwords may use upper case letters, lower case letters, numbers, and special characters which will probably mean b is approximately 94 characters. So a 9 character password has 94⁹ = 572,994,802,228,616,704 unique combinations.</li>
+</ol>
+
+<h1 id="references">References</h1>
+
+<ol>
+<li><a href="https://www.thc.org/thc-hydra/">THC-HYDRA - fast and flexible network login hacker</a></li>
+<li><a href="https://github.com/vanhauser-thc/thc-hydra">vanhauser-thc/thc-hydra: hydra</a></li>
+<li><a href="https://github.com/wpscanteam/wpscan">GitHub - wpscanteam/wpscan: WPScan is a black box WordPress vulnerability scanner.</a></li>
+<li><a href="https://github.com/danielmiessler/SecLists">danielmiessler/SecLists: SecLists is the security tester&rsquo;s companion. It is a collection of multiple types of lists used during security assessments. List types include usernames, passwords, URLs, sensitive data grep strings, fuzzing payloads, and many mo</a></li>
+<li><a href="http://insidetrust.blogspot.com/2011/08/using-hydra-to-dictionary-attack-web.html">insidetrust.com: Using Hydra to dictionary-attack web-based login forms</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Cryptographic_hash_function">Cryptographic hash function - Wikipedia</a></li>
+<li><a href="http://www.openwall.com/john/doc/">John the Ripper documentation</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Passwd">passwd - Wikipedia</a></li>
+</ol>
+
+				</section>
+			</article>
+		</main>
+	</div> 
+
+	
+
+<div class="col-sm-3 col-sm-offset-1 doc-sidebar">
+	<div id="sidebar">
+	<div class="sidebar-module">
+		<div class="sidebar-toc">
+			<h4 class="sidebar-heading">Table of Contents</h4>
+			<ul>
+				<li><strong><a href="#title">Password Attacks</a></strong></li>
+			</ul>
+			<nav id="TableOfContents">
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#brute-force-vs-dictionary">Brute Force vs Dictionary</a>
+<ul>
+<li><a href="#brute-force">Brute Force</a></li>
+<li><a href="#dictionary">Dictionary</a></li>
+</ul></li>
+<li><a href="#online-password-attacks">Online Password Attacks</a>
+<ul>
+<li><a href="#wpscan">WPScan</a></li>
+<li><a href="#hydra">Hydra</a>
+<ul>
+<li><a href="#hydra-simple-examples">Hydra Simple Examples</a></li>
+<li><a href="#hydra-for-attacking-http-logins">Hydra for Attacking HTTP logins</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#offline-password-attacks">Offline password attacks</a>
+<ul>
+<li><a href="#john-the-ripper">John the Ripper</a>
+<ul>
+<li><a href="#unshadowing-linux-passwords">Unshadowing Linux Passwords</a></li>
+<li><a href="#example">Example</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#notes">Notes</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+</nav>
+		</div>
+	</div>
+	<div class="sidebar-module">
+		<h4 class="sidebar-heading">Pages in Categories</h4>
+		<ul class="sidebar-category-list">
+		
+			<li>
+				<a href="http://learn.greyhatctf.com/categories/attack">
+					<span class="doc-list-category">Attack</span>
+				</a>
+				<ul>
+					<li><a href="/attack/attack_lifecycle/">The Cyber Attack Lifecycle #Draft</a>
+					</li>
+				
+				</ul>
+			</li>
+		
+			<li>
+				<a href="http://learn.greyhatctf.com/categories/defense">
+					<span class="doc-list-category">Defense</span>
+				</a>
+				<ul>
+					<li><a href="/defense/introduction/">Threat Detection Introduction</a>
+					</li>
+				
+				</ul>
+			</li>
+		
+		</ul>
+	</div>
+	<div class="sidebar-module">
+		<h4 class="sidebar-heading">Tags</h4>
+		<div class="tag-box">
+		
+			<a class="tag-item" href="http://learn.greyhatctf.com/tags/logs">logs</a>
+		
+			<a class="tag-item" href="http://learn.greyhatctf.com/tags/reference">reference</a>
+		
+		</div>
+	</div>
+	</div>
+</div>
+
+</div> 
+
+
+
+<footer class="doc-footer">
+  <p>&copy; 2017 GreyHat CTF Educational Content</p>
+  <p>Powered by <a href="http://gohugo.io" target="_blank">Hugo</a>,</p>
+</footer>
+

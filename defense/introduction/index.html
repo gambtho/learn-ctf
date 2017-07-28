@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="alternate" href="/index.xml" type="application/rss+xml" title="GreyHat CTF Educational Content">
+		<link rel="icon" href="http://learn.greyhatctf.com/favicon.ico">
+		<title>Threat Detection Introduction - GreyHat CTF Educational Content</title>
+		
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/highlight/default.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/bootstrap.min.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/theme.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/bootie-docs.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/site.css">
+	</head>
+
+<body role="document">
+
+	
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="http://learn.greyhatctf.com/">GreyHat CTF Educational Content</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li ><a href="http://learn.greyhatctf.com/">Home</a></li>
+			
+			
+				
+					<li ><a href="/attack/">attack</a></li>
+				
+					<li ><a href="/defense/">defense</a></li>
+				
+			
+				
+				</ul>
+				
+			</div>
+		</div>
+	</nav>
+
+<div class="container">
+
+
+<div class="row">
+	<div class="col-sm-8 doc-main">
+		<main role="main">
+			<article>
+				<a id="title"></a>
+				<h1 class="doc-entry-title">Threat Detection Introduction</h1>
+				<div class="doc-entry-meta">
+					<span><time datetime="2017-06-26">June 26, 2017</time></span>
+				</div>
+				<section>
+					
+
+<h1 id="purpose">Purpose</h1>
+
+<p>The purpose of this training material is to provide enough basics to get a good start on each of the challenges.  At the same time, you will be acquiring and practicing the necessary skills to be an effective cyber threat detection analyst.</p>
+
+<h2 id="guiding-principles">Guiding Principles</h2>
+
+<p>Whether we like it or not, we must accept that our systems and networks will be compromised and we need to assume that is already the case.</p>
+
+<ul>
+<li><em>Assume Compromise:</em> During this exercise and in your organization, you must assume networks and systems are already compromised</li>
+<li><em>Attackers are People:</em> Attackers are people and have habits, preferred tools, and reuse attack patterns.  These are referred to as Tactics, Techniques, and Procedures (TTPs).</li>
+<li><em>Remove Attacker Options:</em> Adversary TTPs are a weakness we can exploit to frustrate them.  By reliably detecting these TTPs, we remove them from our attacker&rsquo;s available options, kick them out of our systems and we win.</li>
+<li><em>Stop Them Before They Win:</em> Adversaries win if they can successfully complete each of the necessary steps in their particular &ldquo;kill chain&rdquo;.  A Cyber Kill Chain is the succession of actions the attacker must complete in order to accomplish their objective.  Most kill chains have many steps necessary to complete, giving defenders some precious time to detect and respond to their advances.</li>
+</ul>
+
+<h2 id="attack-lifecycle">Attack Lifecycle</h2>
+
+<p>As we can see from the attack life cycle shown below from the Mandiant White paper on <a href="https://media.blackhat.com/bh-us-12/Briefings/Aldridge/BH_US_12_Aldridge_Targeted_Intrustion_WP.pdf">Remediating Targeted-threat Intrusions</a>, attackers typically need to complete a series of actions in order to be successful.  Lockheed Martin calls this attack life cycle an <a href="https://www.lockheedmartin.com/content/dam/lockheed/data/corporate/documents/LM-White-Paper-Intel-Driven-Defense.pdf">Intrusion Kill Chain</a>.  As defenders, if we understand this, we realize that at any step in the lifecycle we can detect and respond to the attacker before they can complete their mission.</p>
+
+<p><img src="/defense/attack_lifecycle.png" alt="Attack Lifecycle" /></p>
+
+<p>You&rsquo;ll see in the later scenarios that we must be constantly asking ourselves based on the evidence, who we think the attacker is, what is their motivation, and where in their life cycle are they to effectively prioritize work and scope an incident.  If the incident is not properly scoped, we may not identify all of the attacker&rsquo;s compromised assets and the attacker may not be removed from the environment entirely.</p>
+
+<h2 id="defender-tools-overview">Defender Tools Overview</h2>
+
+<p>Many of the exercises will leverage Bro Network Security Monitor (NSM) logs and packet capture files.  NSM logs can be easily imported into an analytics platform like the combination of Elasticsearch, Logstash, and Kibana commonly called an ELK stack (or Elastic Stack).</p>
+
+<h3 id="bro-network-security-monitor-nsm">Bro Network Security Monitor (NSM)</h3>
+
+<p><a href="https://www.bro.org/">Bro NSM</a> provides network metadata.  This metadata provides insight about what happened on a network and it is up to the user of the information to derive their own meaning.  Your job during these exercises will typically be to analyze the logs and determine the details of definite or likely malicious activity and discern it from benign activity.  This is often a surprisingly difficult task and requires hands-on experience, which is why this training is hands-on.</p>
+
+<h3 id="elasticsearch-logstash-and-kibana">Elasticsearch, Logstash, and Kibana</h3>
+
+<p>This collection of technologies brings adds a quick log analysis web application with powerful search and visualization capabilities.  We&rsquo;ll be spending the majority of our time using this collection of technologies to explore the Bro NSM logs.  For those interested, you are encouraged to visit the official website for the <a href="https://www.elastic.co/webinars/introduction-elk-stack">Elastic Stack</a>.</p>
+
+<h3 id="wireshark">Wireshark</h3>
+
+<p>Although there are several packet analysis tools, both graphical and command line, Wireshark is a standard tool that anyone in the threat detection and response field should be comfortable with.  We strongly recommend just installing this tool on your host or VM directly, rather than looking at dockerized solutions.  The tool can be downloaded from the <a href="https://www.wireshark.org/">Wireshark Website</a>, but it is also available in most Operating System repositories.</p>
+
+<h3 id="remnux">REMNUX</h3>
+
+<p>There are various tools and methods for performing file triage analysis.  A basic set of tools will be leveraged, but you are certainly not limited to the set of tools documented in this material.</p>
+
+<p>We&rsquo;ll be using <a href="https://hub.docker.com/r/remnux/">Remnux Docker Images</a> for our analysis.  The documentation can be found <a href="https://remnux.org/docs/containers/malware-analysis/">here</a>, but we&rsquo;ll walk through what is needed together.</p>
+
+<p>Let&rsquo;s get started! <a href="/defense/getting_started/">Next Step</a></p>
+
+<p>href=&ldquo;/defense/getting_started/&ldquo;&gt;<button type="button" class="btn btn-Primary btn-arrow-right">Next Article</button></a></p>
+
+				</section>
+			</article>
+		</main>
+	</div> 
+
+	
+
+<div class="col-sm-3 col-sm-offset-1 doc-sidebar">
+	<div id="sidebar">
+	<div class="sidebar-module">
+		<div class="sidebar-toc">
+			<h4 class="sidebar-heading">Table of Contents</h4>
+			<ul>
+				<li><strong><a href="#title">Threat Detection Introduction</a></strong></li>
+			</ul>
+			<nav id="TableOfContents">
+<ul>
+<li><a href="#purpose">Purpose</a>
+<ul>
+<li><a href="#guiding-principles">Guiding Principles</a></li>
+<li><a href="#attack-lifecycle">Attack Lifecycle</a></li>
+<li><a href="#defender-tools-overview">Defender Tools Overview</a>
+<ul>
+<li><a href="#bro-network-security-monitor-nsm">Bro Network Security Monitor (NSM)</a></li>
+<li><a href="#elasticsearch-logstash-and-kibana">Elasticsearch, Logstash, and Kibana</a></li>
+<li><a href="#wireshark">Wireshark</a></li>
+<li><a href="#remnux">REMNUX</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+		</div>
+	</div>
+	<div class="sidebar-module">
+		<h4 class="sidebar-heading">Pages in Categories</h4>
+		<ul class="sidebar-category-list">
+		
+			<li>
+				<a href="http://learn.greyhatctf.com/categories/attack">
+					<span class="doc-list-category">Attack</span>
+				</a>
+				<ul>
+					<li><a href="/attack/attack_lifecycle/">The Cyber Attack Lifecycle #Draft</a>
+					</li>
+				
+				</ul>
+			</li>
+		
+			<li>
+				<a href="http://learn.greyhatctf.com/categories/defense">
+					<span class="doc-list-category">Defense</span>
+				</a>
+				<ul>
+					<li>
+						<span class="active">Threat Detection Introduction</span>
+						</li>
+				
+				</ul>
+			</li>
+		
+		</ul>
+	</div>
+	<div class="sidebar-module">
+		<h4 class="sidebar-heading">Tags</h4>
+		<div class="tag-box">
+		
+			<a class="tag-item" href="http://learn.greyhatctf.com/tags/logs">logs</a>
+		
+			<a class="tag-item" href="http://learn.greyhatctf.com/tags/reference">reference</a>
+		
+		</div>
+	</div>
+	</div>
+</div>
+
+</div> 
+
+
+
+<footer class="doc-footer">
+  <p>&copy; 2017 GreyHat CTF Educational Content</p>
+  <p>Powered by <a href="http://gohugo.io" target="_blank">Hugo</a>,</p>
+</footer>
+

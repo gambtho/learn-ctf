@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="alternate" href="/index.xml" type="application/rss+xml" title="GreyHat CTF Educational Content">
+		<link rel="icon" href="http://learn.greyhatctf.com/favicon.ico">
+		<title>Getting ELK Running - GreyHat CTF Educational Content</title>
+		
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/highlight/default.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/bootstrap.min.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/theme.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/bootie-docs.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/site.css">
+	</head>
+
+<body role="document">
+
+	
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="http://learn.greyhatctf.com/">GreyHat CTF Educational Content</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li ><a href="http://learn.greyhatctf.com/">Home</a></li>
+			
+			
+				
+					<li ><a href="/attack/">attack</a></li>
+				
+					<li ><a href="/defense/">defense</a></li>
+				
+			
+				
+				</ul>
+				
+			</div>
+		</div>
+	</nav>
+
+<div class="container">
+
+
+<div class="row">
+	<div class="col-sm-8 doc-main">
+		<main role="main">
+			<article>
+				<a id="title"></a>
+				<h1 class="doc-entry-title">Getting ELK Running</h1>
+				<div class="doc-entry-meta">
+					<span><time datetime="2017-06-25">June 25, 2017</time></span>
+				</div>
+				<section>
+					
+
+<h1 id="getting-elastic-stack-running">Getting Elastic Stack Running</h1>
+
+<p>In the first set of challenges, we will be analyzing Bro Network Security Monitoring (NSM) logs consisting of both benign and malicious traffic.  If you aren&rsquo;t already familiar with <a href="https://www.bro.org/sphinx/">Bro NSM logs</a>, you soon will be.  For this set of challenges, you are provided with a set of tools, mostly docker-compose and docker files that launch analysis environments and give you access to the forensic artifacts to base your analysis on.  The compose file specifies your local address in the port mapping, so these instances of Elasticsearch and Kibana will only be accessible and visible to your local host, not accessible externally.  For security reasons, we do not want to expose open instances of these services that do not implement authentication and SSL.</p>
+
+<h2 id="pre-requisites">Pre-requisites</h2>
+
+<p>These challenges were built and tested on an Ubuntu Desktop.  The exercises should work without issue on Linux and Mac OSs.  If you are having issues, it is recommended to use Virtual box or other virtualization software with an Ubuntu Desktop VM and provide the VM at least 8 GB RAM and 2 cores.</p>
+
+<p>The host you will be running the exercises on will require Docker and Docker Compose to both be installed and confirmed to be working.  The install instructions for both are found here:</p>
+
+<ul>
+<li><a href="https://www.docker.com/community-edition">Docker Install</a></li>
+<li><a href="https://docs.docker.com/compose/install/">Docker Compose Install</a></li>
+</ul>
+
+<h2 id="setup">Setup</h2>
+
+<p>After installing and confirming the pre-requisites work as expected, you need to get and extract the exercises repository:</p>
+
+<ul>
+<li>Download the git repo by either navigating to the github repo site <a href="https://github.com/egaus/greyhatctf_elk">GreyHatCTF_ELK</a>  via a web browser and downloading and unzipping the repository using the green &ldquo;clone or download&rdquo; button
+OR</li>
+<li>Clone the repository with git</li>
+</ul>
+
+<blockquote>
+<p><code>git clone https://github.com/egaus/greyhatctf_elk.git</code></p>
+</blockquote>
+
+<p>After cloning the repository and extracting the contents, if you are in the top level directory that contains the docker-compose.yml file, you can then start the environment with Docker compose with the following command:</p>
+
+<blockquote>
+<p><code>docker-compose up</code></p>
+</blockquote>
+
+<p>After starting docker compose, you should be able to open a web browser and navigate to <a href="http://localhost:5601">http://localhost:5601</a>.  If all goes well, you will be redirected to the Management area of the Kibana application.</p>
+
+<p><img src="/defense/navigate_to_kibana.png" alt="Kibana Image" /></p>
+
+<p>Not that your environment is working, let&rsquo;s start <a href="/defense/defense101/">The First Scenario</a></p>
+
+<p><a href="/defense/introduction/"><button type="button" class="btn btn-Primary btn-arrow-left">Prev Article</button></a>     <a href="/defense/defense101/"><button type="button" class="btn btn-Primary btn-arrow-right">Next Article</button></a></p>
+
+				</section>
+			</article>
+		</main>
+	</div> 
+
+	
+
+<div class="col-sm-3 col-sm-offset-1 doc-sidebar">
+	<div id="sidebar">
+	<div class="sidebar-module">
+		<div class="sidebar-toc">
+			<h4 class="sidebar-heading">Table of Contents</h4>
+			<ul>
+				<li><strong><a href="#title">Getting ELK Running</a></strong></li>
+			</ul>
+			<nav id="TableOfContents">
+<ul>
+<li><a href="#getting-elastic-stack-running">Getting Elastic Stack Running</a>
+<ul>
+<li><a href="#pre-requisites">Pre-requisites</a></li>
+<li><a href="#setup">Setup</a></li>
+</ul></li>
+</ul>
+</nav>
+		</div>
+	</div>
+	<div class="sidebar-module">
+		<h4 class="sidebar-heading">Pages in Categories</h4>
+		<ul class="sidebar-category-list">
+		
+			<li>
+				<a href="http://learn.greyhatctf.com/categories/attack">
+					<span class="doc-list-category">Attack</span>
+				</a>
+				<ul>
+					<li><a href="/attack/attack_lifecycle/">The Cyber Attack Lifecycle #Draft</a>
+					</li>
+				
+				</ul>
+			</li>
+		
+			<li>
+				<a href="http://learn.greyhatctf.com/categories/defense">
+					<span class="doc-list-category">Defense</span>
+				</a>
+				<ul>
+					<li><a href="/defense/introduction/">Threat Detection Introduction</a>
+					</li>
+				
+				</ul>
+			</li>
+		
+		</ul>
+	</div>
+	<div class="sidebar-module">
+		<h4 class="sidebar-heading">Tags</h4>
+		<div class="tag-box">
+		
+			<a class="tag-item" href="http://learn.greyhatctf.com/tags/logs">logs</a>
+		
+			<a class="tag-item" href="http://learn.greyhatctf.com/tags/reference">reference</a>
+		
+		</div>
+	</div>
+	</div>
+</div>
+
+</div> 
+
+
+
+<footer class="doc-footer">
+  <p>&copy; 2017 GreyHat CTF Educational Content</p>
+  <p>Powered by <a href="http://gohugo.io" target="_blank">Hugo</a>,</p>
+</footer>
+

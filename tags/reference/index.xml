@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Reference on GreyHat CTF Educational Content</title>
+    <link>http://learn.greyhatctf.com/tags/reference/</link>
+    <description>Recent content in Reference on GreyHat CTF Educational Content</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 17 Jul 2017 15:14:05 +0000</lastBuildDate>
+    
+	<atom:link href="http://learn.greyhatctf.com/tags/reference/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>The Cyber Attack Lifecycle</title>
+      <link>http://learn.greyhatctf.com/attack/attack_lifecycle/</link>
+      <pubDate>Mon, 17 Jul 2017 15:14:05 +0000</pubDate>
+      
+      <guid>http://learn.greyhatctf.com/attack/attack_lifecycle/</guid>
+      <description>Introduction Cyber attackers have an operating cycle that is common across many attacks. This cycle can be called the attack lifecycle. There are various models to explain how the lifecycle works by many different organizations including Lockheed Martin, Palo Alto Networks, and Mandiant (see References section for links). If you read each variation of the lifecycle you will find that you can summarize the lifecycle into reconnaissance, exploitation, privilege escalation, and actions on objective phases.</description>
+    </item>
+    
+  </channel>
+</rss>

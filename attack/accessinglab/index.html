@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="alternate" href="/index.xml" type="application/rss+xml" title="GreyHat CTF Educational Content">
+		<link rel="icon" href="http://learn.greyhatctf.com/favicon.ico">
+		<title>Accessing the Lab - GreyHat CTF Educational Content</title>
+		
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/highlight/default.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/bootstrap.min.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/theme.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/bootie-docs.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/site.css">
+	</head>
+
+<body role="document">
+
+	
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="http://learn.greyhatctf.com/">GreyHat CTF Educational Content</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li ><a href="http://learn.greyhatctf.com/">Home</a></li>
+			
+			
+				
+					<li ><a href="/attack/">attack</a></li>
+				
+					<li ><a href="/defense/">defense</a></li>
+				
+			
+				
+				</ul>
+				
+			</div>
+		</div>
+	</nav>
+
+<div class="container">
+
+
+<div class="row">
+	<div class="col-sm-8 doc-main">
+		<main role="main">
+			<article>
+				<a id="title"></a>
+				<h1 class="doc-entry-title">Accessing the Lab</h1>
+				<div class="doc-entry-meta">
+					<span><time datetime="2017-07-15">July 15, 2017</time></span>
+				</div>
+				<section>
+					
+
+<h1 id="introduction">Introduction</h1>
+
+<p>The lab environment that we are hosting contains the virtual machines (VMs) that you&rsquo;ll need to access in order to play in the CTF. We use OpenVPN to private a secure tunnel to the lab environment from your Internet connection.</p>
+
+<p>OpenVPN is an open source VPN software application that allows configuration of VPN services for servers and clients. Our lab network is configured to use OpenVPN to connect to our CTF machines in our attack scenarios.</p>
+
+<h1 id="lab-rules">Lab Rules</h1>
+
+<ol>
+<li>Denial of service type attacks are not allowed.</li>
+<li>Locking other players out from the VM is not allowed. This includes setting firewall rules or disabling listening services which were already turned on.</li>
+<li>Altering or deleting flags is not allowed.</li>
+<li>Altering IP address configurations is not allowed.</li>
+<li>Attacking other players on the system is not allowed.</li>
+</ol>
+
+<p>Anyone found to be violating these rules may be kicked off the network and banned from future access.</p>
+
+<h1 id="preconfigured-kali-linux">Preconfigured Kali Linux</h1>
+
+<p>We provide a preconfigured <a href="https://drive.google.com/open?id=0B2K8RLTn7XOaVmsyTWVVSGd1ZTQ">Kali Linux VM</a> to download. The username:password for the VM is root:toor. All you have to do is open a terminal and run the script on the Desktop by opening a terminal and entering <code>./openvpn_connect.sh</code>. The script will start the VPN connection. You&rsquo;ll have to enter your credentials to complete the connection.</p>
+
+<h1 id="client-configuration-for-linux">Client configuration for Linux</h1>
+
+<ol>
+<li>Go to <a href="https://107.21.21.107:943/">https://107.21.21.107:943/</a></li>
+<li>Enter credentials to login.</li>
+<li>Click link at bottom &ldquo;Yourself (user-locked profile)&rdquo;</li>
+<li>Save client.ovpn to a folder on your system</li>
+<li>Open a terminal</li>
+<li>Use command <code>openvpn --config client.ovpn --auth-nocache</code> to connect. In the code example, client.ovpn is in the current directory.</li>
+<li>Your terminal will display connection information and should complete connection after about 10 seconds.</li>
+<li>Leave terminal open to keep the OpenVPN connection active.</li>
+<li>Close terminal or type Ctrl+C to kill connection.</li>
+</ol>
+
+<h2 id="vpn-credentials">VPN Credentials</h2>
+
+<p>User name: student</p>
+
+<p>Check Piazza for the VPN password.</p>
+
+<h1 id="subnets">Subnets</h1>
+
+<p>You&rsquo;ll have to scan 10.0.0.0/16 to find the VM to attack. Or alternatively go to <a href="https://2mvsrfattk.execute-api.us-east-1.amazonaws.com/live/">https://2mvsrfattk.execute-api.us-east-1.amazonaws.com/live/</a> to find a list of IP addresses for each VM.</p>
+
+<h1 id="lab-virtual-machines">Lab Virtual Machines</h1>
+
+<p>The lab VMs all have vulnerabilities that can be exploited to gain access and find flags. VMs will reset back to original configurations approximately every hour. So consider yourself to have one huor per VM to attack. If you don&rsquo;t finish in one hour, just start over on the reset VM.</p>
+
+<h1 id="references">References</h1>
+
+<ol>
+<li><a href="https://en.wikipedia.org/wiki/OpenVPN">OpenVPN - Wikipedia</a></li>
+<li><a href="Official Kali Linux Downloads | Kali Linux">https://www.kali.org/downloads/</a></li>
+</ol>
+
+				</section>
+			</article>
+		</main>
+	</div> 
+
+	
+
+<div class="col-sm-3 col-sm-offset-1 doc-sidebar">
+	<div id="sidebar">
+	<div class="sidebar-module">
+		<div class="sidebar-toc">
+			<h4 class="sidebar-heading">Table of Contents</h4>
+			<ul>
+				<li><strong><a href="#title">Accessing the Lab</a></strong></li>
+			</ul>
+			<nav id="TableOfContents">
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#lab-rules">Lab Rules</a></li>
+<li><a href="#preconfigured-kali-linux">Preconfigured Kali Linux</a></li>
+<li><a href="#client-configuration-for-linux">Client configuration for Linux</a>
+<ul>
+<li><a href="#vpn-credentials">VPN Credentials</a></li>
+</ul></li>
+<li><a href="#subnets">Subnets</a></li>
+<li><a href="#lab-virtual-machines">Lab Virtual Machines</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+</nav>
+		</div>
+	</div>
+	<div class="sidebar-module">
+		<h4 class="sidebar-heading">Pages in Categories</h4>
+		<ul class="sidebar-category-list">
+		
+			<li>
+				<a href="http://learn.greyhatctf.com/categories/attack">
+					<span class="doc-list-category">Attack</span>
+				</a>
+				<ul>
+					<li><a href="/attack/attack_lifecycle/">The Cyber Attack Lifecycle #Draft</a>
+					</li>
+				
+				</ul>
+			</li>
+		
+			<li>
+				<a href="http://learn.greyhatctf.com/categories/defense">
+					<span class="doc-list-category">Defense</span>
+				</a>
+				<ul>
+					<li><a href="/defense/introduction/">Threat Detection Introduction</a>
+					</li>
+				
+				</ul>
+			</li>
+		
+		</ul>
+	</div>
+	<div class="sidebar-module">
+		<h4 class="sidebar-heading">Tags</h4>
+		<div class="tag-box">
+		
+			<a class="tag-item" href="http://learn.greyhatctf.com/tags/logs">logs</a>
+		
+			<a class="tag-item" href="http://learn.greyhatctf.com/tags/reference">reference</a>
+		
+		</div>
+	</div>
+	</div>
+</div>
+
+</div> 
+
+
+
+<footer class="doc-footer">
+  <p>&copy; 2017 GreyHat CTF Educational Content</p>
+  <p>Powered by <a href="http://gohugo.io" target="_blank">Hugo</a>,</p>
+</footer>
+

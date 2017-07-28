@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="alternate" href="/index.xml" type="application/rss+xml" title="GreyHat CTF Educational Content">
+		<link rel="icon" href="http://learn.greyhatctf.com/favicon.ico">
+		<title>Enumerating Web Sites - GreyHat CTF Educational Content</title>
+		
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/highlight/default.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/bootstrap.min.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/theme.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/bootie-docs.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/site.css">
+	</head>
+
+<body role="document">
+
+	
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="http://learn.greyhatctf.com/">GreyHat CTF Educational Content</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li ><a href="http://learn.greyhatctf.com/">Home</a></li>
+			
+			
+				
+					<li ><a href="/attack/">attack</a></li>
+				
+					<li ><a href="/defense/">defense</a></li>
+				
+			
+				
+				</ul>
+				
+			</div>
+		</div>
+	</nav>
+
+<div class="container">
+
+
+<div class="row">
+	<div class="col-sm-8 doc-main">
+		<main role="main">
+			<article>
+				<a id="title"></a>
+				<h1 class="doc-entry-title">Enumerating Web Sites</h1>
+				<div class="doc-entry-meta">
+					<span><time datetime="2017-07-04">July 04, 2017</time></span>
+				</div>
+				<section>
+					
+
+<h1 id="introduction">Introduction</h1>
+
+<p>Often times networks are accessible through some sort of public web site. One of the keys to successfully gaining a foothold on a network is to enumerate a website and gather more information and find vulnerabilities.</p>
+
+<p>There are a variety of tools to automate the task of enumerating websites. We won&rsquo;t cover all of the tools here in this article but we will cover some of the more popular tools. Additionally, <a href="http://learn.greyhatctf.com/attack/nmap/">Nmap</a> can also be used to enumerate websites using NSE scripts.</p>
+
+<h1 id="robots-txt">robots.txt</h1>
+
+<p>robots.txt file is a text file located in the root of the web directory and is designed to notify web crawlers which directories it should not crawl. robots.txt is a publically accessible file and the restriction to crawl pages listed in the file is a directive only. Attackers can just as easily view the robots.txt file and go to the directories listed there.</p>
+
+<p>robots.txt is a great way to quickly check if there are interesting directories on the web server which should be investigated.</p>
+
+<p>Sample robots.txt from <a href="https://wordpress.org/">https://wordpress.org/</a></p>
+
+<pre><code>User-agent: *
+Disallow: /search
+Disallow: /support/search.php
+Disallow: /extend/plugins/search.php
+Disallow: /plugins/search.php
+Disallow: /extend/themes/search.php
+Disallow: /themes/search.php
+Disallow: /support/rss
+Disallow: /archive/
+</code></pre>
+
+<h1 id="dirbuster">DirBuster</h1>
+
+<p>DirBuster is a free Java based application that can be used to scan for web site directories. It comes packaged with lists of directories that can be scanned for. The application is multi-threaded and can run very fast on multi-core CPUs. DirBuster is a great way to scan for directories that may not be linked from the homepage or search engines.</p>
+
+<h2 id="basic-usage">Basic Usage</h2>
+
+<ol>
+<li>Enter target URL</li>
+<li>Select word list</li>
+<li>Click start</li>
+<li>View results</li>
+</ol>
+
+<p><img src="/attack/dirbuster_start.png" alt="DirBuster Start" /></p>
+
+<p><img src="/attack/dirbuster_results.png" alt="DirBuster Results" /></p>
+
+<h1 id="nikto">Nikto</h1>
+
+<p>Nikto is another free and open source web server scanner. Nikto can automatically scan for vulnerabilities on different server types and different content management systems (CMS).</p>
+
+<h2 id="basic-usage-1">Basic Usage</h2>
+
+<pre><code>nikto -host http://192.168.222.159/dvwa/
+</code></pre>
+
+<h3 id="output-from-dvwa">Output from DVWA</h3>
+
+<pre><code>- Nikto v2.1.6
+---------------------------------------------------------------------------
++ Target IP:          192.168.222.159
++ Target Hostname:    192.168.222.159
++ Target Port:        80
++ Start Time:         2017-07-05 21:00:45 (GMT-4)
+---------------------------------------------------------------------------
++ Server: Apache/2.2.8 (Ubuntu) DAV/2
++ Retrieved x-powered-by header: PHP/5.2.4-2ubuntu5.10
++ The anti-clickjacking X-Frame-Options header is not present.
++ The X-XSS-Protection header is not defined. This header can hint to the user agent to protect against some forms of XSS
++ The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type
++ Cookie PHPSESSID created without the httponly flag
++ Cookie security created without the httponly flag
++ Root page / redirects to: login.php
++ No CGI Directories found (use '-C all' to force check all possible dirs)
++ Server leaks inodes via ETags, header found with file /dvwa/robots.txt, inode: 93164, size: 26, mtime: Tue Mar 16 01:56:22 2010
++ Uncommon header 'tcn' found, with contents: list
++ Apache mod_negotiation is enabled with MultiViews, which allows attackers to easily brute force file names. See http://www.wisec.it/sectou.php?id=4698ebdc59d15. The following alternatives for 'index' were found: index.php
++ Apache/2.2.8 appears to be outdated (current is at least Apache/2.4.12). Apache 2.0.65 (final release) and 2.2.29 are also current.
++ Allowed HTTP Methods: GET, HEAD, POST, OPTIONS, TRACE 
++ OSVDB-877: HTTP TRACE method is active, suggesting the host is vulnerable to XST
++ OSVDB-3268: /dvwa/config/: Directory indexing found.
++ /dvwa/config/: Configuration information may be available remotely.
++ OSVDB-12184: /dvwa/?=PHPB8B5F2A0-3C92-11d3-A3A9-4C7B08C10000: PHP reveals potentially sensitive information via certain HTTP requests that contain specific QUERY strings.
++ OSVDB-12184: /dvwa/?=PHPE9568F36-D428-11d2-A769-00AA001ACF42: PHP reveals potentially sensitive information via certain HTTP requests that contain specific QUERY strings.
++ OSVDB-12184: /dvwa/?=PHPE9568F34-D428-11d2-A769-00AA001ACF42: PHP reveals potentially sensitive information via certain HTTP requests that contain specific QUERY strings.
++ OSVDB-12184: /dvwa/?=PHPE9568F35-D428-11d2-A769-00AA001ACF42: PHP reveals potentially sensitive information via certain HTTP requests that contain specific QUERY strings.
++ OSVDB-3092: /dvwa/login/: This might be interesting...
++ OSVDB-3268: /dvwa/docs/: Directory indexing found.
++ OSVDB-3092: /dvwa/CHANGELOG.txt: A changelog was found.
++ /dvwa/login.php: Admin login page/section found.
++ /dvwa/?-s: PHP allows retrieval of the source code via the -s parameter, and may allow command execution. See http://www.kb.cert.org/vuls/id/520827
++ /dvwa/login.php?-s: PHP allows retrieval of the source code via the -s parameter, and may allow command execution. See http://www.kb.cert.org/vuls/id/520827
++ /dvwa/CHANGELOG.txt: Version number implies that there is a SQL Injection in Drupal 7, can be used for authentication bypass (Drupageddon: see https://www.sektioneins.de/advisories/advisory-012014-drupal-pre-auth-sql-injection-vulnerability.html).
++ 7534 requests: 0 error(s) and 25 item(s) reported on remote host
++ End Time:           2017-07-05 21:00:58 (GMT-4) (13 seconds)
+---------------------------------------------------------------------------
++ 1 host(s) tested
+</code></pre>
+
+<h1 id="wpscan">WPScan</h1>
+
+<p>WordPress is a popular open source CMS. W3Techs reports that WordPress is used on approximately 28% of all websites and 59% of all CMSs. Over the years WordPress has been proven to have many security vulnerabilities. Because of it&rsquo;s popularity and numerous vulnerabilities, it&rsquo;s a wonderful thing when an attacker finds a site powered by WordPress.</p>
+
+<p>WPScan is free scanner that works specifically with WordPress sites. It can automatically enumerate WordPress sites for vulnerabilities, enumerate users, and attempt to brute force logins.</p>
+
+<h2 id="basic-usage-examples">Basic Usage Examples</h2>
+
+<p>Update database</p>
+
+<pre><code>wpscan --update
+</code></pre>
+
+<p>Basic scan</p>
+
+<pre><code>wpscan -u http://192.168.222.166/
+</code></pre>
+
+<p>Enumerate users</p>
+
+<pre><code>wpscan -u http://192.168.222.166/ -e u
+</code></pre>
+
+<p>Attempt to guess login for user with password list</p>
+
+<pre><code>wpscan -u http://192.168.222.166/ --wordlist /usr/share/john/password.lst --username user
+</code></pre>
+
+<h3 id="output-from-standard-scan-of-bitnami-wordpress-stack">Output from standard scan of Bitnami WordPress Stack</h3>
+
+<pre><code>_______________________________________________________________
+        __          _______   _____                  
+        \ \        / /  __ \ / ____|                 
+         \ \  /\  / /| |__) | (___   ___  __ _ _ __ ®
+          \ \/  \/ / |  ___/ \___ \ / __|/ _` | '_ \ 
+           \  /\  /  | |     ____) | (__| (_| | | | |
+            \/  \/   |_|    |_____/ \___|\__,_|_| |_|
+
+        WordPress Security Scanner by the WPScan Team 
+                       Version 2.9.2
+          Sponsored by Sucuri - https://sucuri.net
+   @_WPScan_, @ethicalhack3r, @erwan_lr, pvdl, @_FireFart_
+_______________________________________________________________
+
+[+] URL: http://192.168.222.166/
+[+] Started: Wed Jul  5 21:56:06 2017
+
+[+] robots.txt available under: 'http://192.168.222.166/robots.txt'
+[+] Interesting entry from robots.txt: http://192.168.222.166/wp-admin/admin-ajax.php
+[!] The WordPress 'http://192.168.222.166/readme.html' file exists exposing a version number
+[+] Interesting header: LINK: &lt;http://192.168.222.166/wp-json/&gt;; rel=&quot;https://api.w.org/&quot;
+[+] Interesting header: SERVER: Apache
+[+] Interesting header: X-FRAME-OPTIONS: SAMEORIGIN
+[+] Interesting header: X-POWERED-BY: PHP/7.0.18
+[+] XML-RPC Interface available under: http://192.168.222.166/xmlrpc.php
+
+[+] WordPress version 4.8 (Released on 2017-06-08) identified from meta generator, links opml
+
+[+] WordPress theme in use: twentyseventeen - v1.3
+
+[+] Name: twentyseventeen - v1.3
+ |  Latest version: 1.3 (up to date)
+ |  Location: http://192.168.222.166/wp-content/themes/twentyseventeen/
+ |  Readme: http://192.168.222.166/wp-content/themes/twentyseventeen/README.txt
+ |  Style URL: http://192.168.222.166/wp-content/themes/twentyseventeen/style.css
+ |  Theme Name: Twenty Seventeen
+ |  Theme URI: https://wordpress.org/themes/twentyseventeen/
+ |  Description: Twenty Seventeen brings your site to life with header video and immersive featured images. With a...
+ |  Author: the WordPress team
+ |  Author URI: https://wordpress.org/
+
+[+] Enumerating plugins from passive detection ...
+[+] No plugins found
+
+[+] Finished: Wed Jul  5 21:56:08 2017
+[+] Requests Done: 68
+[+] Memory used: 17.34 MB
+[+] Elapsed time: 00:00:01
+</code></pre>
+
+<h1 id="references">References</h1>
+
+<ol>
+<li><a href="https://www.owasp.org/index.php/Category:OWASP_DirBuster_Project">Category:OWASP DirBuster Project</a></li>
+<li><a href="http://www.robotstxt.org/robotstxt.html">The Web Robots Pages</a></li>
+<li><a href="https://cirt.net/nikto2">Nikto 2 | Cirt.net</a></li>
+<li><a href="https://github.com/wpscanteam/wpscan">GitHub - wpscanteam/wpscan: WPScan is a black box WordPress vulnerability scanner.</a></li>
+<li><a href="https://en.wikipedia.org/wiki/WordPress">WordPress - Wikipedia</a></li>
+<li><a href="https://w3techs.com/technologies/overview/content_management/all">Usage Statistics and Market Share of Content Management Systems for Websites, July 2017</a></li>
+<li><a href="https://www.wpwhitesecurity.com/wordpress-tips-webmasters/strong-wordpress-passwords-wpscan/">Launch a WordPress Bruteforce Attack with WPScan</a></li>
+</ol>
+
+				</section>
+			</article>
+		</main>
+	</div> 
+
+	
+
+<div class="col-sm-3 col-sm-offset-1 doc-sidebar">
+	<div id="sidebar">
+	<div class="sidebar-module">
+		<div class="sidebar-toc">
+			<h4 class="sidebar-heading">Table of Contents</h4>
+			<ul>
+				<li><strong><a href="#title">Enumerating Web Sites</a></strong></li>
+			</ul>
+			<nav id="TableOfContents">
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#robots-txt">robots.txt</a></li>
+<li><a href="#dirbuster">DirBuster</a>
+<ul>
+<li><a href="#basic-usage">Basic Usage</a></li>
+</ul></li>
+<li><a href="#nikto">Nikto</a>
+<ul>
+<li><a href="#basic-usage-1">Basic Usage</a>
+<ul>
+<li><a href="#output-from-dvwa">Output from DVWA</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#wpscan">WPScan</a>
+<ul>
+<li><a href="#basic-usage-examples">Basic Usage Examples</a>
+<ul>
+<li><a href="#output-from-standard-scan-of-bitnami-wordpress-stack">Output from standard scan of Bitnami WordPress Stack</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#references">References</a></li>
+</ul>
+</nav>
+		</div>
+	</div>
+	<div class="sidebar-module">
+		<h4 class="sidebar-heading">Pages in Categories</h4>
+		<ul class="sidebar-category-list">
+		
+			<li>
+				<a href="http://learn.greyhatctf.com/categories/attack">
+					<span class="doc-list-category">Attack</span>
+				</a>
+				<ul>
+					<li><a href="/attack/attack_lifecycle/">The Cyber Attack Lifecycle #Draft</a>
+					</li>
+				
+				</ul>
+			</li>
+		
+			<li>
+				<a href="http://learn.greyhatctf.com/categories/defense">
+					<span class="doc-list-category">Defense</span>
+				</a>
+				<ul>
+					<li><a href="/defense/introduction/">Threat Detection Introduction</a>
+					</li>
+				
+				</ul>
+			</li>
+		
+		</ul>
+	</div>
+	<div class="sidebar-module">
+		<h4 class="sidebar-heading">Tags</h4>
+		<div class="tag-box">
+		
+			<a class="tag-item" href="http://learn.greyhatctf.com/tags/logs">logs</a>
+		
+			<a class="tag-item" href="http://learn.greyhatctf.com/tags/reference">reference</a>
+		
+		</div>
+	</div>
+	</div>
+</div>
+
+</div> 
+
+
+
+<footer class="doc-footer">
+  <p>&copy; 2017 GreyHat CTF Educational Content</p>
+  <p>Powered by <a href="http://gohugo.io" target="_blank">Hugo</a>,</p>
+</footer>
+

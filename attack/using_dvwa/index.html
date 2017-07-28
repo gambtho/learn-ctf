@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="alternate" href="/index.xml" type="application/rss+xml" title="GreyHat CTF Educational Content">
+		<link rel="icon" href="http://learn.greyhatctf.com/favicon.ico">
+		<title>Using DVWA - GreyHat CTF Educational Content</title>
+		
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/highlight/default.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/bootstrap.min.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/theme.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/bootie-docs.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/site.css">
+	</head>
+
+<body role="document">
+
+	
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="http://learn.greyhatctf.com/">GreyHat CTF Educational Content</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li ><a href="http://learn.greyhatctf.com/">Home</a></li>
+			
+			
+				
+					<li ><a href="/attack/">attack</a></li>
+				
+					<li ><a href="/defense/">defense</a></li>
+				
+			
+				
+				</ul>
+				
+			</div>
+		</div>
+	</nav>
+
+<div class="container">
+
+
+<div class="row">
+	<div class="col-sm-8 doc-main">
+		<main role="main">
+			<article>
+				<a id="title"></a>
+				<h1 class="doc-entry-title">Using DVWA</h1>
+				<div class="doc-entry-meta">
+					<span><time datetime="2017-07-28">July 28, 2017</time></span>
+				</div>
+				<section>
+					
+
+<h1 id="introduction">Introduction</h1>
+
+<p>The Damn Vulnerable Web Application (DVWA) is purposely vulnerable web application that is hosted in our lab. The application is designed to assist training attacking various web application vulnerabilities. Most of the common web vulnerabilities are tested including cross site scripting, SQL injection, local file inclusion, remote file inclusion, directory traversal, command injection, and weak credentials.</p>
+
+<h1 id="accessing-dvwa">Accessing DVWA</h1>
+
+<p>Ensure that you can access the lab environment through the VPN tunnel. See <a href="http://learn.greyhatctf.com/attack/accessinglab/">Accessing the Lab</a> for more details on VPN connection configurations.</p>
+
+<p>Once you have your VPN connection up, open a web browser and go to http://<DVWA IP>/dvwa/. This will only work with an active VPN connection.</p>
+
+<p>You&rsquo;ll see a web page with a login form.
+<img src="/attack/dvwa_login.png" alt="DVWA login" />
+Use admin:password to login.</p>
+
+<h1 id="using-dvwa">Using DVWA</h1>
+
+<p>Once you are logged in you&rsquo;ll see a welcome page. Read through the welcome page and click the DVWA Security link on the navigation bar on the left.
+<img src="/attack/dvwa_welcome.png" alt="DVWA Welcome" /></p>
+
+<p>In the security page, I recommend that you put the security setting on Low and start training from there. To do this select Low from the drop down menu and click submit. You can raise levels as needed as you advance your security training.
+<img src="/attack/dvwa_security.png" alt="DVWA Security" /></p>
+
+<p>Once you&rsquo;ve done that you can navigate to any of the challenges and start attacking.
+<img src="/attack/dvwa_challenges.png" alt="DVWA Challenges" /></p>
+
+<p>Inside each of the challenge pages you&rsquo;ll find a small web app that allows you to test your web application penetration testing skills. You&rsquo;ll also find links to more information resources to help you.</p>
+
+<p>If you mess anything up in the web server you can reset it by going Setup / Reset DB page and clicking the Create / Reset Database button at the bottom of the screen.
+<img src="/attack/dvwa_db_setup.png" alt="DVWA Database Setup" /></p>
+
+<p>That&rsquo;s all there is to it. Don&rsquo;t be afraid to try new things and don&rsquo;t worry about messing up the web application. It&rsquo;s designed to be messed with and attacked.</p>
+
+<p>Happy hacking!</p>
+
+<h1 id="references">References</h1>
+
+<p><a href="http://www.dvwa.co.uk/">DVWA - Damn Vulnerable Web Application</a></p>
+
+				</section>
+			</article>
+		</main>
+	</div> 
+
+	
+
+<div class="col-sm-3 col-sm-offset-1 doc-sidebar">
+	<div id="sidebar">
+	<div class="sidebar-module">
+		<div class="sidebar-toc">
+			<h4 class="sidebar-heading">Table of Contents</h4>
+			<ul>
+				<li><strong><a href="#title">Using DVWA</a></strong></li>
+			</ul>
+			<nav id="TableOfContents">
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#accessing-dvwa">Accessing DVWA</a></li>
+<li><a href="#using-dvwa">Using DVWA</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+</nav>
+		</div>
+	</div>
+	<div class="sidebar-module">
+		<h4 class="sidebar-heading">Pages in Categories</h4>
+		<ul class="sidebar-category-list">
+		
+			<li>
+				<a href="http://learn.greyhatctf.com/categories/attack">
+					<span class="doc-list-category">Attack</span>
+				</a>
+				<ul>
+					<li><a href="/attack/attack_lifecycle/">The Cyber Attack Lifecycle #Draft</a>
+					</li>
+				
+				</ul>
+			</li>
+		
+			<li>
+				<a href="http://learn.greyhatctf.com/categories/defense">
+					<span class="doc-list-category">Defense</span>
+				</a>
+				<ul>
+					<li><a href="/defense/introduction/">Threat Detection Introduction</a>
+					</li>
+				
+				</ul>
+			</li>
+		
+		</ul>
+	</div>
+	<div class="sidebar-module">
+		<h4 class="sidebar-heading">Tags</h4>
+		<div class="tag-box">
+		
+			<a class="tag-item" href="http://learn.greyhatctf.com/tags/logs">logs</a>
+		
+			<a class="tag-item" href="http://learn.greyhatctf.com/tags/reference">reference</a>
+		
+		</div>
+	</div>
+	</div>
+</div>
+
+</div> 
+
+
+
+<footer class="doc-footer">
+  <p>&copy; 2017 GreyHat CTF Educational Content</p>
+  <p>Powered by <a href="http://gohugo.io" target="_blank">Hugo</a>,</p>
+</footer>
+

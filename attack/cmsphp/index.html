@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="alternate" href="/index.xml" type="application/rss+xml" title="GreyHat CTF Educational Content">
+		<link rel="icon" href="http://learn.greyhatctf.com/favicon.ico">
+		<title>Web CMS PHP Reverse Shell - GreyHat CTF Educational Content</title>
+		
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/highlight/default.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/bootstrap.min.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/theme.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/bootie-docs.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/site.css">
+	</head>
+
+<body role="document">
+
+	
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="http://learn.greyhatctf.com/">GreyHat CTF Educational Content</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li ><a href="http://learn.greyhatctf.com/">Home</a></li>
+			
+			
+				
+					<li ><a href="/attack/">attack</a></li>
+				
+					<li ><a href="/defense/">defense</a></li>
+				
+			
+				
+				</ul>
+				
+			</div>
+		</div>
+	</nav>
+
+<div class="container">
+
+
+<div class="row">
+	<div class="col-sm-8 doc-main">
+		<main role="main">
+			<article>
+				<a id="title"></a>
+				<h1 class="doc-entry-title">Web CMS PHP Reverse Shell</h1>
+				<div class="doc-entry-meta">
+					<span><time datetime="2017-07-24">July 24, 2017</time></span>
+				</div>
+				<section>
+					
+
+<h1 id="introduction">Introduction</h1>
+
+<p>A web content management system (CMS) is a application which supports the creation and management of web pages. The most popular of the web CMSs is WordPress. The two other most popular CMSs after WordPress are Joomla and Drupal. Web CMS generally perform similar functions so attacks on WordPress CMSs will tend to generalize to other CMSs.</p>
+
+<p>One of the key features of web CMSs is that they typically support dynamic web content through the usage of PHP which is a server-side scripting language. Because the server executes PHP code to serve web pages, if an attacker can control the PHP code that the server executes, then the attacker can gain remote code execution on the web server.</p>
+
+<h1 id="getting-a-php-reverse-shell-on-wordpress">Getting a PHP Reverse Shell on WordPress</h1>
+
+<p>First you need to login to the WordPress admin console. You&rsquo;ll typically see a login page like the screen shot below.</p>
+
+<p><img src="/attack/wp_login.png" alt="WordPress Login" /></p>
+
+<p>After a successful login you&rsquo;ll see a WordPress dashboard. On the left navigation menu go to Appearance -&gt; Editor.</p>
+
+<p><img src="/attack/wp_dashboard.png" alt="WordPress Dashboard" /></p>
+
+<p>From the editor click on the Theme Footer link on the right navigation menu under Templates. The footer is contained in a file called footer.php. The nice thing about the footer is that it&rsquo;s contained on every page at the bottom and any PHP code contained in the footer will get executed when you browse to a page with that theme. You can use other template files with PHP code but the footer.php works well for this example.</p>
+
+<p><img src="/attack/wp_editor.png" alt="WordPress Editor" /></p>
+
+<p>At the top of the footer.php file you&rsquo;ll see PHP code contained in angle brackets.</p>
+
+<pre><code>&lt;?php
+/**
+ * The template for displaying the footer
+ *
+ * Contains the closing of the #content div and all content after.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
+ * @package WordPress
+ * @subpackage Twenty_Seventeen
+ * @since 1.0
+ * @version 1.2
+ */
+
+?&gt;
+</code></pre>
+
+<p>This is where you&rsquo;ll insert your PHP code which will give you a reverse shell. A simple but functional PHP reverse shell can be found here <a href="https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php">https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php</a>. On the reverse shell code on line 49 change the IP address to your listener IP and on line 50 change the port to your listening port.</p>
+
+<p>On your listener machine which you control, start a netcat listener. Here we&rsquo;re using port 4444 to listen on.</p>
+
+<pre><code>nc -lvp 4444
+</code></pre>
+
+<p>Replace the code starting with <code>&lt;?php</code> and ending with <code>?&gt;</code> with the reverse shell code. then click Update File. You&rsquo;ll see File edited successfully at the top of the page.</p>
+
+<p>Now all you have to do browse to a page on the WordPress site and your listener should catch a reverse shell from the web server.</p>
+
+<p><img src="/attack/nc_php_reverse.png" alt="Reverse shell on netcat listener" /></p>
+
+<p>Executing <code>whoami</code> shows that you are running on the shell as <code>daemon</code>, often instead of <code>daemon</code> you&rsquo;ll be the user <code>www-data</code>.</p>
+
+<h1 id="references">References</h1>
+
+<ol>
+<li><a href="https://en.wikipedia.org/wiki/Content_management_system">Content management system - Wikipedia</a></li>
+<li><a href="https://w3techs.com/technologies/overview/content_management/all">Usage Statistics and Market Share of Content Management Systems for Websites, July 2017</a></li>
+<li><a href="https://en.wikipedia.org/wiki/WordPress">WordPress - Wikipedia</a></li>
+</ol>
+
+				</section>
+			</article>
+		</main>
+	</div> 
+
+	
+
+<div class="col-sm-3 col-sm-offset-1 doc-sidebar">
+	<div id="sidebar">
+	<div class="sidebar-module">
+		<div class="sidebar-toc">
+			<h4 class="sidebar-heading">Table of Contents</h4>
+			<ul>
+				<li><strong><a href="#title">Web CMS PHP Reverse Shell</a></strong></li>
+			</ul>
+			<nav id="TableOfContents">
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#getting-a-php-reverse-shell-on-wordpress">Getting a PHP Reverse Shell on WordPress</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+</nav>
+		</div>
+	</div>
+	<div class="sidebar-module">
+		<h4 class="sidebar-heading">Pages in Categories</h4>
+		<ul class="sidebar-category-list">
+		
+			<li>
+				<a href="http://learn.greyhatctf.com/categories/attack">
+					<span class="doc-list-category">Attack</span>
+				</a>
+				<ul>
+					<li><a href="/attack/attack_lifecycle/">The Cyber Attack Lifecycle #Draft</a>
+					</li>
+				
+				</ul>
+			</li>
+		
+			<li>
+				<a href="http://learn.greyhatctf.com/categories/defense">
+					<span class="doc-list-category">Defense</span>
+				</a>
+				<ul>
+					<li><a href="/defense/introduction/">Threat Detection Introduction</a>
+					</li>
+				
+				</ul>
+			</li>
+		
+		</ul>
+	</div>
+	<div class="sidebar-module">
+		<h4 class="sidebar-heading">Tags</h4>
+		<div class="tag-box">
+		
+			<a class="tag-item" href="http://learn.greyhatctf.com/tags/logs">logs</a>
+		
+			<a class="tag-item" href="http://learn.greyhatctf.com/tags/reference">reference</a>
+		
+		</div>
+	</div>
+	</div>
+</div>
+
+</div> 
+
+
+
+<footer class="doc-footer">
+  <p>&copy; 2017 GreyHat CTF Educational Content</p>
+  <p>Powered by <a href="http://gohugo.io" target="_blank">Hugo</a>,</p>
+</footer>
+

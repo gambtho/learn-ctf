@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="alternate" href="/index.xml" type="application/rss+xml" title="GreyHat CTF Educational Content">
+		<link rel="icon" href="http://learn.greyhatctf.com/favicon.ico">
+		<title>We Love Shells - GreyHat CTF Educational Content</title>
+		
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/highlight/default.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/bootstrap.min.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/theme.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/bootie-docs.css">
+		<link rel="stylesheet" href="http://learn.greyhatctf.com/css/site.css">
+	</head>
+
+<body role="document">
+
+	
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="http://learn.greyhatctf.com/">GreyHat CTF Educational Content</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li ><a href="http://learn.greyhatctf.com/">Home</a></li>
+			
+			
+				
+					<li ><a href="/attack/">attack</a></li>
+				
+					<li ><a href="/defense/">defense</a></li>
+				
+			
+				
+				</ul>
+				
+			</div>
+		</div>
+	</nav>
+
+<div class="container">
+
+
+<div class="row">
+	<div class="col-sm-8 doc-main">
+		<main role="main">
+			<article>
+				<a id="title"></a>
+				<h1 class="doc-entry-title">We Love Shells</h1>
+				<div class="doc-entry-meta">
+					<span><time datetime="2017-07-06">July 06, 2017</time></span>
+				</div>
+				<section>
+					
+
+<h1 id="introduction">Introduction</h1>
+
+<p>A shell is a user interface that gives interactive access to a host. Typically shells that attackers user will be on a command line interface (CLI).</p>
+
+<p>On Linux the most common shell is Bash and on Windows the most common shell is cmd.exe and PowerShell. The shells on both Linux and Windows systems allow a user to interact with the system in almost any way he wants as long he has the appropriate permissions.</p>
+
+<p>Learning how to use Bash or cmd.exe or PowerShell is outside of the scope of this lessons here. You can find entire books written on the subject of learning how to use those shells. I&rsquo;ll refer you to the references section for more resources on learning shell interfaces.</p>
+
+<p>Shellcode refers to a piece of code that used as part of payload from an attacker to a victim. Once the shellcode is on the victim machine it can then provide interactive shell capabilities to the attacker.</p>
+
+<h1 id="types-of-shells">Types of Shells</h1>
+
+<p>There are two primary types of shellcode used by attackers. These are the bind shell and reverse shell which are explained in further detail below.</p>
+
+<h2 id="bind-shell">Bind Shell</h2>
+
+<p>A bind shell is the simpler of the two types of shellcode used by attackers but is less likely to evade firewalls. The bind shell is created when the attacker initiates a connection to the host (usually over TCP/IP) and sets up a remote shell.</p>
+
+<h3 id="steps">Steps</h3>
+
+<ol>
+<li>Victim binds a shell to a port and listens on that port for incoming connections</li>
+<li>Attacker sends a connection request listening port on the victim machine.</li>
+<li>Attacker get an interactive shell (e.g. bash or cmd.exe)</li>
+</ol>
+
+<h2 id="reverse-shell">Reverse Shell</h2>
+
+<p>A reverse shell is usually preferred method for attackers to get an interactive shell on their victim. A reverse shell creates an outbound connection from the victim to the attacker. Since most firewalls allow outbound connections from hosts inside the network the attacker can usually evade firewalls which may prevent him from getting a bind shell!</p>
+
+<h3 id="steps-1">Steps</h3>
+
+<ol>
+<li>Attacker sets up a listener on a port on a machine he controls</li>
+<li>Victim hosts sends connection request to the attacker on listening port and sends a shell upon connecting</li>
+<li>Attacker gets an interactive shell (e.g. bash or cmd.exe)</li>
+</ol>
+
+<h1 id="references">References</h1>
+
+<ol>
+<li><a href="https://en.wikipedia.org/wiki/Shell_(computing)">Shell (computing) - Wikipedia</a></li>
+<li><a href="https://msdn.microsoft.com/powershell/scripting/getting-started/fundamental/using-windows-powershell">Using Windows PowerShell</a></li>
+<li><a href="http://linuxcommand.org/index.php">LinuxCommand.org: Learn the Linux command line. Write shell scripts.</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Shellcode">Shellcode - Wikipedia</a></li>
+</ol>
+
+				</section>
+			</article>
+		</main>
+	</div> 
+
+	
+
+<div class="col-sm-3 col-sm-offset-1 doc-sidebar">
+	<div id="sidebar">
+	<div class="sidebar-module">
+		<div class="sidebar-toc">
+			<h4 class="sidebar-heading">Table of Contents</h4>
+			<ul>
+				<li><strong><a href="#title">We Love Shells</a></strong></li>
+			</ul>
+			<nav id="TableOfContents">
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#types-of-shells">Types of Shells</a>
+<ul>
+<li><a href="#bind-shell">Bind Shell</a>
+<ul>
+<li><a href="#steps">Steps</a></li>
+</ul></li>
+<li><a href="#reverse-shell">Reverse Shell</a>
+<ul>
+<li><a href="#steps-1">Steps</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#references">References</a></li>
+</ul>
+</nav>
+		</div>
+	</div>
+	<div class="sidebar-module">
+		<h4 class="sidebar-heading">Pages in Categories</h4>
+		<ul class="sidebar-category-list">
+		
+			<li>
+				<a href="http://learn.greyhatctf.com/categories/attack">
+					<span class="doc-list-category">Attack</span>
+				</a>
+				<ul>
+					<li><a href="/attack/attack_lifecycle/">The Cyber Attack Lifecycle #Draft</a>
+					</li>
+				
+				</ul>
+			</li>
+		
+			<li>
+				<a href="http://learn.greyhatctf.com/categories/defense">
+					<span class="doc-list-category">Defense</span>
+				</a>
+				<ul>
+					<li><a href="/defense/introduction/">Threat Detection Introduction</a>
+					</li>
+				
+				</ul>
+			</li>
+		
+		</ul>
+	</div>
+	<div class="sidebar-module">
+		<h4 class="sidebar-heading">Tags</h4>
+		<div class="tag-box">
+		
+			<a class="tag-item" href="http://learn.greyhatctf.com/tags/logs">logs</a>
+		
+			<a class="tag-item" href="http://learn.greyhatctf.com/tags/reference">reference</a>
+		
+		</div>
+	</div>
+	</div>
+</div>
+
+</div> 
+
+
+
+<footer class="doc-footer">
+  <p>&copy; 2017 GreyHat CTF Educational Content</p>
+  <p>Powered by <a href="http://gohugo.io" target="_blank">Hugo</a>,</p>
+</footer>
+
