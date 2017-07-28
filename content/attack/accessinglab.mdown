@@ -38,10 +38,10 @@ User name: student
 Check Piazza for the VPN password.
 
 # Subnets
-You'll have to scan 10.0.0.0/16 to find the VM to attack.
+You'll have to scan 10.0.0.0/16 to find the VM to attack. Or alternatively go to [https://2mvsrfattk.execute-api.us-east-1.amazonaws.com/live/](https://2mvsrfattk.execute-api.us-east-1.amazonaws.com/live/) to find a list of IP addresses for each VM.
 
 # Lab Virtual Machines
-The lab VMs all have vulnerabilities that can be exploited to gain access and find flags. VMs will reset back to original configurations approximately every 30 minutes. So consider yourself to have 30 minutes per VM to attack. If you don't finish in 30 minutes just start over on the reset VM.
+The lab VMs all have vulnerabilities that can be exploited to gain access and find flags. VMs will reset back to original configurations approximately every hour. So consider yourself to have one huor per VM to attack. If you don't finish in one hour, just start over on the reset VM.
 
 # References
 1. [OpenVPN - Wikipedia](https://en.wikipedia.org/wiki/OpenVPN)
